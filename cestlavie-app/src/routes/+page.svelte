@@ -26,7 +26,7 @@
 <p>discovery and recommendations, curated by friends</p>
 <p></p>
 
-<button class='sample' on:click={() => window.open("/stubs", "_self")}>
+<button class='sample' onclick={() => window.open("/stubs", "_self")}>
     <img class="stub" src="data/labelling/images/stubs/b6fc8982-scrapbook_26-stub_06.jpg" alt="ticket stub of the Arc de Triomphe">
 </button>
 

@@ -1,8 +1,7 @@
 <script>
 	import StubCard from './StubCard.svelte';
 
-	export let items = [];
-	export let path;
+	let { items = [], path } = $props();
 
 </script>
 

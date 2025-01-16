@@ -16,7 +16,7 @@
 
 </script>
 
-<button on:click={() => (open = true)}>
+<button onclick={() => (open = true)}>
   <article>
     <div class="top">
       <p class='start'>Start of Travel:</p>

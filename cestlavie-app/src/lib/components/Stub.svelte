@@ -1,8 +1,5 @@
 <script>
-    export let path;
-    export let item = {'filename': ''};
-    export let width;
-    export let height;
+    let { path, item = {'filename': ''}, width, height } = $props();
 
 </script>
 <img loading="lazy" src="{path}/{item.filename}"

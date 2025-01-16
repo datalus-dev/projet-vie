@@ -22,7 +22,7 @@
 		<div class="pinpoint"></div>
 	</div>
 	<div class="stub card">
-		<Card on:click={() => (open = true)}>
+		<Card onclick={() => (open = true)}>
 			<Content>
 				{#if item.filename}
 					<div class="image">
