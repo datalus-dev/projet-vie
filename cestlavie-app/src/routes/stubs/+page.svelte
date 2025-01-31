@@ -1,5 +1,6 @@
 <script>
 	import Gallery from "$lib/components/Gallery.svelte";
+	import Microfiche from "$lib/components/Microfiche.svelte";
 	
 	export let data;
 
@@ -15,6 +16,9 @@
 
 <h1>Ticket Stubs</h1>   
 
+<Microfiche {path} {items} />
+
 <div>
+
 	<Gallery {path} {items} />
 </div>

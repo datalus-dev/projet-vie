@@ -7,3 +7,14 @@
         width={width}
         height={height}
 	 />
+
+<style>
+    img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        text-align: center;
+        display: block;
+        margin: auto;
+    }
+</style>

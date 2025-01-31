@@ -6,12 +6,10 @@
 	import markdownit from 'markdown-it';
 	import Stub from '$lib/components/Stub.svelte';
 
-	export let path;
-	export let item;
-	export let width;
-	export let height;
+	let { path, item, width, height } = $props();
+
 	const md = markdownit();
-	let open = false;
+	let open = $state(false);
 </script>
 
 <div>
