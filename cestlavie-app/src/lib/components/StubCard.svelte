@@ -38,7 +38,7 @@
 				<path fill="currentColor" d={mdiClose} />
 			</Icon>
 		</IconButton>
-		<div>
+		<div id="stub">
 			{#if item.filename}
 				<Stub {path} {item} width={""} height={""} />
 			{/if}
@@ -60,4 +60,13 @@
 	.card:hover {
 		cursor: pointer;
 	}
+
+	#stub {
+        --r: 25px; /* cut size */
+        height: 250px;
+        aspect-ratio: 1.2;
+        border-radius: 20px;
+        background: #F07818;
+        mask: radial-gradient(var(--r) at var(--r),#0000 calc(100% - 1px),#000) calc(-1*var(--r));
+    }
 </style>

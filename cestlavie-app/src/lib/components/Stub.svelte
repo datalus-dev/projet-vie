@@ -1,5 +1,5 @@
 <script>
-    let { path, item = {'filename': ''}, width, height } = $props();
+    let { path, item = {'filename': ''}, width="200px", height="200px" } = $props();
 
 </script>
 <img loading="lazy" src="{path}/{item.filename}"

@@ -5,14 +5,14 @@
 
 </script>
 
-<article>
+<article id="stub">
     <ul>
         {#each items as item}
             <li><Stub {path} {item} /></li>
         {/each}
     </ul>
-    <div>
 </article>
+<button class="btn">Add Me</button>
   
 
 <style>
@@ -38,7 +38,7 @@
         box-sizing: border-box;
         border: 1px solid;
         grid-template-columns: repeat(5, 1fr);
-        background: conic-gradient(
+        /* background: conic-gradient(
         at bottom left,
         red 0deg,
         yellow 15deg,
@@ -46,7 +46,7 @@
         blue 45deg,
         purple 60deg,
         magenta 75deg
-        );
+        ); */
         background-attachment: local;
         margin: auto;
         width: 20vw;
@@ -62,6 +62,15 @@
         font-family: monospace;
         font-size: 3rem;
         line-height: 12vw;
+    }
+    
+    #stub {
+        --r: 25px; /* cut size */
+        height: 250px;
+        aspect-ratio: 1.2;
+        border-radius: 20px;
+        background: #F07818;
+        mask: radial-gradient(var(--r) at var(--r),#0000 calc(100% - 1px),#000) calc(-1*var(--r));
     }
 }
 
