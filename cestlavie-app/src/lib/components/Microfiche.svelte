@@ -8,7 +8,8 @@
 <article id="stub">
     <ul>
         {#each items as item}
-            <li><Stub {path} {item} /></li>
+        <!-- ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);"  -->
+            <li><div draggable="true" id="src_copy"><Stub {path} {item} /></div></li>
         {/each}
     </ul>
 </article>
@@ -66,7 +67,7 @@
     
     #stub {
         --r: 25px; /* cut size */
-        height: 250px;
+        height: 300px;
         aspect-ratio: 1.2;
         border-radius: 20px;
         background: #F07818;
