@@ -1,11 +1,23 @@
 <script>
   import Carousel from 'svelte-carousel';
-    // ...
   let { images } = $props();
+
+  let carousel;
+  function handleKeyDown(e) {
+    if (e.key === 'ArrowLeft') {
+      carousel.goToPrev();
+    }
+
+    if (e.key === 'ArrowRight') {
+      carousel.goToNext();
+    }
+  }
 </script>
 
+<svelte:window onkeydown={handleKeyDown}/>
 <Carousel
-  let:loaded
+        bind:this={carousel}
+        let:loaded
 >
   {#each images as src, imageIndex (src)}
     <div class="img-container">
