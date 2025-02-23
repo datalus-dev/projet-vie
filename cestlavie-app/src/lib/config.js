@@ -15,6 +15,9 @@ export const faviconImage = '/images/favicon.png'
 // Edit this to alter the main nav menu. (Also used by the footer and mobile nav.)
 export const navItems = [
 	{
+		title: 'Vie',
+		route: '/vie'
+	}, {
 		title: 'Carousel',
 		route: '/carousel'
 	}, {
@@ -23,8 +26,5 @@ export const navItems = [
 	}, {
 		title: 'Tags',
 		route: '/tags'
-	}, {
-		title: 'Vie',
-		route: '/vie'
 	},
 ]

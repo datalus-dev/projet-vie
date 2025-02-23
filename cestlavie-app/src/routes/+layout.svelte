@@ -50,7 +50,7 @@
 	<link rel="stylesheet" href="/css/vars.css" />
 </svelte:head>
 
-<div class="layout" class:open={$isMenuOpen}>
+<div class="layout" class:open={isMenuOpen}>
 	<Header />
 	{#key data.path}
 		<main id="main" tabindex="-1" in:fade|global={transitionIn} out:fade|global={transitionOut}>

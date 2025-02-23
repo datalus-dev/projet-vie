@@ -1,15 +1,38 @@
 <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap -->
 <script>
-    import Stub from "./Stub.svelte";
+    import StubCard from "./StubCard.svelte";
     let { items = [], path } = $props();
+
+    const dragstart_handler = (ev) => {
+        // TODO: add dragging logic now
+        
+        // ev.preventDefault()
+        console.log("dragStart");
+        // Change the source element's background color to signify drag has started
+        ev.currentTarget.style.border = "dashed";
+        // Add the id of the drag source element to the drag data payload so
+        // it is available when the drop event is fired
+        ev.dataTransfer.setData("text", ev.target.id);
+        // Tell the browser both copy and move are possible
+        ev.effectAllowed = "copyMove";
+}
+
+    const dragend_handler = (ev) => {
+    console.log("dragEnd");
+    // Restore source's border
+    ev.target.style.border = "solid black";
+    }
 
 </script>
 
 <article id="stub">
     <ul>
         {#each items as item}
-        <!-- ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);"  -->
-            <li><div draggable="true" id="src_copy"><Stub {path} {item} /></div></li>
+            <li>
+                <div draggable="true" id="src_copy" ondragstart={dragstart_handler} ondragend={dragend_handler} >
+                    <StubCard {path} {item} />
+                </div>
+            </li>
         {/each}
     </ul>
 </article>
@@ -65,14 +88,7 @@
         line-height: 12vw;
     }
     
-    #stub {
-        --r: 25px; /* cut size */
-        height: 300px;
-        aspect-ratio: 1.2;
-        border-radius: 20px;
-        background: #F07818;
-        mask: radial-gradient(var(--r) at var(--r),#0000 calc(100% - 1px),#000) calc(-1*var(--r));
-    }
+    
 }
 
 </style>

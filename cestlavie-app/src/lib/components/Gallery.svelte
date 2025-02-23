@@ -1,5 +1,6 @@
 <script>
 	import StubCard from './StubCard.svelte';
+	import StubWithPin from './StubWithPin.svelte';
 
 	let { items = [], path } = $props();
 
@@ -10,7 +11,7 @@
 	<div id="wrapper">
 		{#each items as item}
 			<div class="cell">
-				<StubCard {path} {item} width={"100px"} height={""}/>
+				<StubWithPin {path} {item} width={"100px"} height={""}/>
 			</div>
 		{/each}
 	</div>

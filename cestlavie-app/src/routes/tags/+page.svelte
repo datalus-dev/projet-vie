@@ -1,7 +1,8 @@
 <script>
+    import RegionChart from '$lib/components/RegionChart.svelte';
     import TravelTag from '$lib/components/TravelTag.svelte'
 
-    export let data;
+    let { data } = $props();
     let { logTravel, recs } = data;
 
     let { recommendations } = recs;
@@ -20,6 +21,11 @@
         }
     });
 
+    let trips = Object.groupBy(logTravel.trips, ({desRegion}) => desRegion);
+    let aggTrips = {};
+    Object.entries(trips).map(([region, arr]) => (aggTrips[region] = arr.length))
+    aggTrips = [aggTrips];
+
 </script>
 
 <!-- // 1. this will be a page that pulls from the posts using the api for all the travel tagged posts
@@ -31,6 +37,11 @@
 🚧 To Be Completed 🚧 -->
 
 <h1>Places Visited</h1>
+
+<div class="chart">
+    <RegionChart trips={aggTrips} />
+</div>
+
 <div class="tags">
 {#each logTravel['trips'] as trip}
     {#if trip['stays']}
@@ -43,12 +54,23 @@
 
 <style>
     .tags {
-        display: flex;
-        justify-content: space-between;
-        /* width: 1000px; */
-        flex-wrap: wrap;
+        display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		row-gap: 50px;
+		column-gap: 25px;
     }
+
+    .chart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        padding: 50px;
+        gap: 100px;
+    }
+
 </style>
+
     <!-- <TravelTag /> -->
 
 <!-- {logTravel['id']['name']} -->

@@ -4,32 +4,26 @@
 	import IconButton, { Icon } from '@smui/icon-button';
 	import Dialog, { Content as DContent } from '@smui/dialog';
 	import markdownit from 'markdown-it';
-	import Stub from '$lib/components/Stub.svelte';
+	import StubImage from './StubImage.svelte';
 
-	let { path, item, width, height } = $props();
+	let { path, item, width="200px", height="200px" } = $props();
 
 	const md = markdownit();
 	let open = $state(false);
 </script>
 
-<div>
-	<div class="pushpin tilted">
-		<div class="pinhead"></div>
-		<div class="pinbase"></div>
-		<div class="pinshaft"></div>
-		<div class="pinpoint"></div>
-	</div>
-	<div class="stub card">
-		<Card onclick={() => (open = true)}>
-			<Content>
-				{#if item.filename}
-					<div class="image">
-						<Stub {path} {item} {width} {height}/>
-					</div>
-				{/if}
-			</Content>
-		</Card>
-	</div>
+
+<div class="stub card">
+	<Card onclick={() => (open = true)}>
+		<Content>
+			{#if item.filename}
+				<div class="image">
+					<StubImage {path} {item} {width} {height}/>
+					<!-- <article id='test'>{item.filename}</article> -->
+				</div>
+			{/if}
+		</Content>
+	</Card>
 </div>
 <Dialog bind:open sheet aria-describedby="sheet-content">
 	<DContent id="sheet-content">
@@ -40,7 +34,7 @@
 		</IconButton>
 		<div id="stub">
 			{#if item.filename}
-				<Stub {path} {item} width={""} height={""} />
+				<StubImage {path} {item} width={""} height={""} />
 			{/if}
 			{#if item.description}
 				<p>{@html md.render(item.description)}</p>
@@ -61,12 +55,4 @@
 		cursor: pointer;
 	}
 
-	#stub {
-        --r: 25px; /* cut size */
-        height: 250px;
-        aspect-ratio: 1.2;
-        border-radius: 20px;
-        background: #F07818;
-        mask: radial-gradient(var(--r) at var(--r),#0000 calc(100% - 1px),#000) calc(-1*var(--r));
-    }
 </style>
