@@ -43,19 +43,20 @@
 </div>
 
 <div class="tags">
-{#each logTravel['trips'] as trip}
-    {#if trip['stays']}
-        {#each trip['stays'] as stay}
-        <TravelTag {...stay}/>
-        {/each}
-    {/if}
-{/each}
+    {#each logTravel['trips'] as trip}
+        {#if trip['stays']}
+            {#each trip['stays'] as stay}
+            <TravelTag {...stay}/>
+            {/each}
+        {/if}
+    {/each}
 </div>
 
 <style>
     .tags {
+        width: 100vw;
         display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		row-gap: 50px;
 		column-gap: 25px;
     }

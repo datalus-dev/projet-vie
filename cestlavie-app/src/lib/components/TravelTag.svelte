@@ -4,15 +4,18 @@
 	import IconButton, { Icon } from "@smui/icon-button";
   import { mdiClose } from '@mdi/js';
 
-  export let startDate = '01 Jan 1970';
-  export let transportation = '✈️';
-  export let carrier = '';
-  export let destination = 'New York';
-  export let desTravelCode = 'JFK';
-  export let linkRec = '';
-  export let linkAlbum = '';
+  let {
+    startDate = '01 Jan 1970',
+    transportation = '✈️',
+    carrier = '',
+    destination = 'New York',
+    desTravelCode = 'JFK',
+    linkRec = '',
+    linkAlbum = '',
+  } = $props();
+  
 
-  let open = false;
+  let open = $state(false);
 
 </script>
 
@@ -20,7 +23,7 @@
   <article>
     <div class="top">
       <p class='start'>Start of Travel:</p>
-      <h2>{startDate}</h2>
+      <p>{startDate}</p>
     </div>
     <div class="block">
       <div class="punch-hole"></div>
@@ -29,7 +32,7 @@
     <div class="middle">
       <p>To:</p> 
       <div class="IATA">{desTravelCode}</div>
-      <div class="destination"><h2>{destination}</h2></div>
+      <div class="destination"><p>{destination}</p></div>
     </div>
 
     <div class="bottom">
@@ -131,14 +134,14 @@
     }
 
 
-    h2 {
+    .destination p {
     margin-top: 0px;
     font-family: 'Squada One', cursive;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #343E6F;
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-align: center;
     }
 
