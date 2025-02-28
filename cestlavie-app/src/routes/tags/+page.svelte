@@ -6,11 +6,11 @@
     let { logTravel, recs } = data;
 
     let { recommendations } = recs;
-    
+    let filter = $state('');
+
     logTravel.trips.forEach((trip, idx) => {
         if (trip.stays) {
             trip.stays.forEach((stay, idy) => {
-                recommendations.filter(rec => stay.destination == stay.destination).pop()
                 let rec = recommendations.filter(r => r.destination == stay.destination)[0];
                 logTravel.trips[idx].stays[idy].linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
 
@@ -37,17 +37,23 @@
 🚧 To Be Completed 🚧 -->
 
 <h1>Places Visited</h1>
-
-<div class="chart">
-    <RegionChart trips={aggTrips} />
+<div>
+    <div class="chart">
+        <RegionChart trips={aggTrips} bind:filter={filter} />
+    </div>
+    <div class="reset">
+        <button onclick={() => filter = ''}>Reset</button>
+    </div>
 </div>
 
 <div class="tags">
     {#each logTravel['trips'] as trip}
-        {#if trip['stays']}
-            {#each trip['stays'] as stay}
-            <TravelTag {...stay}/>
-            {/each}
+        {#if filter == '' || trip['desRegion'] == filter}
+            {#if trip['stays']}
+                {#each trip['stays'] as stay}
+                <TravelTag {...stay}/>
+                {/each}
+            {/if}
         {/if}
     {/each}
 </div>
@@ -68,6 +74,13 @@
         width: 100vw;
         padding: 50px;
         gap: 100px;
+    }
+
+    .reset {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 0px 50px 0px
     }
 
 </style>

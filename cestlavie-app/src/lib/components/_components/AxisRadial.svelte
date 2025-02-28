@@ -7,18 +7,21 @@
 
   const { width, height, xScale, extents, config } = getContext('LayerCake');
 
-  /** @type {Number} [lineLengthFactor=1.1] - How far to extend the lines from the circle's center. A value of `1` puts them at the circle's circumference. */
-  export let lineLengthFactor = 1.1;
+  // /** @type {Number} [lineLengthFactor=1.1] - How far to extend the lines from the circle's center. A value of `1` puts them at the circle's circumference. */
+  let { lineLengthFactor = 1.1, labelPlacementFactor = 1.25, filter=$bindable() } = $props();
 
-  /** @type {Number} [labelPlacementFactor=1.25] - How far to place the labels from the circle's center. A value of `1` puts them at the circle's circumference. */
-  export let labelPlacementFactor = 1.25;
+  let max = $derived($xScale(Math.max(...$extents.x)));
 
-  $: max = $xScale(Math.max(...$extents.x));
+  let lineLength = $derived(max * lineLengthFactor);
+  let labelPlacement = $derived(max * labelPlacementFactor);
 
-  $: lineLength = max * lineLengthFactor;
-  $: labelPlacement = max * labelPlacementFactor;
+  let angleSlice = $state((Math.PI * 2) / $config.x.length);
 
-  $: angleSlice = (Math.PI * 2) / $config.x.length;
+  function click(evt) {
+
+    filter = evt.target.firstChild.data;
+    console.log(filter)
+  }
 
   /** @param {Number} total
    *  @param {Number} i */
@@ -49,12 +52,23 @@
       fill="none"
     >
     </line>
+    <!-- <rect width="0.5em" height="1em"> -->
+      <!-- TODO: fix a11y -->
     <text
+      onclick={click}
       text-anchor={anchor($config.x.length, i)}
       dy="0.35em"
       font-size="12px"
       transform="translate({labelPlacement * Math.cos(thisAngleSlice)}, {labelPlacement *
-        Math.sin(thisAngleSlice)})">{label}</text
+        Math.sin(thisAngleSlice)})" role="button">{label}</text
     >
+    <!-- </rect> -->
+
   {/each}
 </g>
+
+<style>
+  text:hover {
+    cursor: pointer;
+  }
+</style>

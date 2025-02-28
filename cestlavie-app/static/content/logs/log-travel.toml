@@ -1,30 +1,8 @@
 [id]
 name = "Teon's Travel Log"
 
-# [[trips]]
-# destination = ""
-# description = ""
-# startDate = ""
-# endDate = ""
-# linkAlbum = ""
-
-# [[trips.stays]]
-# origin = ""
-# oriCountry = ""
-# oriTravelCode = ""
-# destination = ""
-# desCountry = ""
-# desTravelCode = ""
-# transportation = "✈️"
-# carrier = ""
-# carrierCode = ""
-# description = ""
-# startDate = ""
-# endDate = ""
-# linkAlbum = ""
-
 [[trips]]
-destination = "First International Travel!"
+title = "First International Travel!"
 desRegion = "Europe"
 description = "Germany, France, Italy"
 startDate = "2007-05-14"
@@ -199,7 +177,7 @@ linkAlbum = ""
 # linkAlbum = ""
 
 [[trips]]
-destination = "Brazil"
+title = "Brazil"
 desRegion = "South America"
 description = "São Paulo, Rio, Salvador"
 startDate = "2010-07-12"
@@ -303,7 +281,7 @@ endDate = "2010-08-04"
 linkAlbum = ""
 
 [[trips]]
-destination = "Europe"
+title = "Europe"
 desRegion = "Europe"
 description = "London, Zurich, Berlin, Rome, and Barcelona"
 startDate = "2011-07-19"
@@ -471,7 +449,7 @@ endDate = "2011-08-18"
 linkAlbum = ""
 
 [[trips]]
-destination = "Abu Dhabi"
+title = "Abu Dhabi"
 desRegion = "Asia"
 description = "NYU Abu Dhabi Lab Trip"
 startDate = "2012-04-20"
@@ -495,7 +473,7 @@ endDate = "2012-04-29"
 linkAlbum = ""
 
 [[trips]]
-destination = "Brazil"
+title = "Brazil"
 desRegion = "South America"
 description = "Rio. Early days of Airbnb"
 startDate = "2013-01-14"
@@ -519,7 +497,7 @@ endDate = "2013-01-23"
 linkAlbum = ""
 
 [[trips]]
-destination = "Israel"
+title = "Israel"
 desRegion = "Asia"
 description = "Itamar's Wedding"
 startDate = "2013-05-22"
@@ -543,7 +521,7 @@ endDate = "2013-05-29"
 linkAlbum = ""
 
 [[trips]]
-destination = "Argentina + Uruguay"
+title = "Argentina + Uruguay"
 desRegion = "South America"
 description = "Buenos Aires, Bariloche, Colonia, Montevideo"
 startDate = "2013-07-14"
@@ -631,7 +609,7 @@ endDate = "2013-07-31"
 linkAlbum = ""
 
 [[trips]]
-destination = "Toronto"
+title = "Toronto"
 desRegion = "North America"
 description = "Davien's Birthday"
 startDate = "2013-09-20"
@@ -655,7 +633,7 @@ endDate = "2013-09-22"
 linkAlbum = ""
 
 [[trips]]
-destination = "Montreal"
+title = "Montreal"
 desRegion = "North America"
 description = "Amtrak"
 startDate = "2013-10-19"
@@ -679,7 +657,7 @@ endDate = "2013-10-21"
 linkAlbum = ""
 
 [[trips]]
-destination = "Brazil"
+title = "Brazil"
 desRegion = "South America"
 description = "A month in Brazil with Lucas' family"
 startDate = "2013-12-25"
@@ -751,7 +729,7 @@ endDate = "2014-01-27"
 linkAlbum = ""
 
 [[trips]]
-destination = "Lindau"
+title = "Lindau"
 desRegion = "Europe"
 description = "Lindau Meeting of Nobel Laureates"
 startDate = "2014-06-27"
@@ -775,7 +753,7 @@ endDate = "2014-07-05"
 linkAlbum = ""
 
 [[trips]]
-destination = "Paris"
+title = "Paris"
 desRegion = "Europe"
 description = "Research Fellowship"
 startDate = "2014-07-21"
@@ -1260,7 +1238,7 @@ startDate = "2015-07-02"
 linkAlbum = ""
 
 [[trips]]
-destination = "Abu Dhabi + Paris"
+title = "Abu Dhabi + Paris"
 desRegion = "Asia"
 description = "Experimental Approaches to Arabic and other understudied Languages (EXAL+)"
 startDate = "2019-01-30"
@@ -1312,7 +1290,7 @@ startDate = "2015-01-28"
 linkAlbum = ""
 
 [[trips]]
-destination = "Thailand + Japan"
+title = "Thailand + Japan"
 desRegion = "Asia"
 description = "DIYSciThai"
 startDate = "2016-06-16"
@@ -1364,7 +1342,7 @@ startDate = "2016-07-04"
 linkAlbum = ""
 
 [[trips]]
-destination = "Toronto"
+title = "Toronto"
 desRegion = "North America"
 description = "Mozilla Fellowship Onboarding"
 startDate = "2016-09-11"
@@ -1387,7 +1365,7 @@ endDate = "2016-09-16"
 linkAlbum = ""
 
 [[trips]]
-destination = "London + SF"
+title = "London + SF"
 desRegion = "Europe"
 description = "My big move to SF 😬"
 startDate = "2016-10-17"
@@ -1461,7 +1439,7 @@ linkAlbum = ""
 # linkAlbum = ""
 
 [[trips]]
-destination = "Montreal"
+title = "Montreal"
 desRegion = "North America"
 description = "Working Open Workshop"
 startDate = "2017-03-07"
@@ -1484,7 +1462,7 @@ endDate = "2017-03-12"
 linkAlbum = ""
 
 [[trips]]
-destination = "Chile"
+title = "Chile"
 desRegion = "South America"
 description = "GOSH Workshop"
 startDate = "2017-03-16"
@@ -1507,7 +1485,7 @@ endDate = "2017-03-25"
 linkAlbum = ""
 
 [[trips]]
-destination = "Washington, DC"
+title = "Washington, DC"
 desRegion = "North America"
 description = "March for Science"
 startDate = "2017-04-20"
@@ -1515,7 +1493,7 @@ endDate = "2017-04-24"
 linkAlbum = ""
 
 [[trips]]
-destination = "Portland"
+title = "Portland"
 desRegion = "North America"
 description = "csv,conf"
 startDate = "2017-04-30"
@@ -1523,7 +1501,7 @@ endDate = "2017-05-05"
 linkAlbum = ""
 
 [[trips]]
-destination = "Washington, DC"
+title = "Washington, DC"
 desRegion = "North America"
 description = "4th Annual LGBTQ Tech and Innovation Summit"
 startDate = "2017-05-07"
@@ -1531,7 +1509,7 @@ endDate = "2017-05-09"
 linkAlbum = ""
 
 [[trips]]
-destination = "Las Vegas"
+title = "Las Vegas"
 desRegion = "North America"
 description = "Pedro's Birthday"
 startDate = "2017-05-26"
@@ -1539,7 +1517,7 @@ endDate = "2017-05-29"
 linkAlbum = ""
 
 [[trips]]
-destination = "Capetown, South Africa"
+title = "Capetown, South Africa"
 desRegion = "Africa"
 description = "Mozilla Fellowship Offboarding"
 startDate = "2017-06-09"
@@ -1547,7 +1525,7 @@ endDate = "2017-06-20"
 linkAlbum = ""
 
 [[trips]]
-destination = "Brazil"
+title = "Brazil"
 desRegion = "South America"
 description = "micro-WOW"
 startDate = "2017-06-26"
@@ -1555,7 +1533,7 @@ endDate = "2017-07-05"
 linkAlbum = ""
 
 [[trips]]
-destination = "Europe: Lisbon, Paris, Toulon, French Alps, La Bollene, Prague, Amsterdam, Oslo"
+title = "Europe: Lisbon, Paris, Toulon, French Alps, La Bollene, Prague, Amsterdam, Oslo"
 desRegion = "Europe"
 description = "Scandinavian Trip with Joe"
 startDate = "2017-07-17"
@@ -1563,7 +1541,7 @@ endDate = "2017-08-08"
 linkAlbum = ""
 
 [[trips]]
-destination = "Portland"
+title = "Portland"
 desRegion = "North America"
 description = "csv,conf"
 startDate = "2017-04-30"
@@ -1574,7 +1552,7 @@ linkAlbum = ""
 
 
 [[trips]]
-destination = "Research Triangle"
+title = "Research Triangle"
 desRegion = "North America"
 description = "alt-ac talks"
 startDate = "2019-01-30"
@@ -1612,7 +1590,7 @@ endDate = "2019-01-31"
 linkAlbum = ""
 
 [[trips]]
-destination = "Australia"
+title = "Australia"
 desRegion = "Oceania"
 description = "Sydney Pride! 🏳️‍🌈"
 startDate = "2019-01-30"
@@ -1634,7 +1612,7 @@ endDate = "2019-03-10"
 linkAlbum = ""
 
 [[trips]]
-destination = "Paris"
+title = "Paris"
 desRegion = "Europe"
 description = "MNE Coding Sprint"
 startDate = "2019-03-19"
@@ -1642,7 +1620,7 @@ endDate = "2019-03-27"
 linkAlbum = ""
 
 [[trips]]
-destination = "Portland"
+title = "Portland"
 desRegion = "North America"
 description = "csv,conf,v4"
 startDate = "2019-05-07"
@@ -1650,7 +1628,7 @@ endDate = "2019-05-10"
 linkAlbum = ""
 
 [[trips]]
-destination = "Durham"
+title = "Durham"
 desRegion = "North America"
 description = "Nephew's Graduation"
 startDate = "2019-02-23"
@@ -1658,7 +1636,7 @@ endDate = "2019-03-10"
 linkAlbum = ""
 
 [[trips]]
-destination = "Spain"
+title = "Spain"
 desRegion = "Europe"
 description = "James' 30th Birthday"
 startDate = "2019-05-23"
@@ -1666,7 +1644,7 @@ endDate = "2019-06-04"
 linkAlbum = ""
 
 [[trips]]
-destination = "British Columbia: Vancouver + Whistler"
+title = "British Columbia: Vancouver + Whistler"
 desRegion = "North America"
 description = "Mozilla All-Hands"
 startDate = "2019-06-14"
@@ -1674,7 +1652,7 @@ endDate = "2019-06-22"
 linkAlbum = ""
 
 [[trips]]
-destination = "Montreal"
+title = "Montreal"
 desRegion = "North America"
 description = "Cognitive Science Society"
 startDate = "2019-07-23"
@@ -1682,7 +1660,7 @@ endDate = "2019-07-28"
 linkAlbum = ""
 
 [[trips]]
-destination = "Provincetown"
+title = "Provincetown"
 desRegion = "North America"
 description = "Carnival! 🏳️‍🌈"
 startDate = "2019-08-15"
@@ -1690,7 +1668,7 @@ endDate = "2019-08-18"
 linkAlbum = ""
 
 [[trips]]
-destination = "SF"
+title = "SF"
 desRegion = "North America"
 description = "Mozilla socialization"
 startDate = "2019-09-26"
@@ -1698,7 +1676,7 @@ endDate = "2019-10-04"
 linkAlbum = ""
 
 [[trips]]
-destination = "Atlanta"
+title = "Atlanta"
 desRegion = "North America"
 description = "RStudio Workshop Co-Teaching"
 startDate = "2019-09-13"
@@ -1706,7 +1684,7 @@ endDate = "2019-09-15"
 linkAlbum = ""
 
 [[trips]]
-destination = "Australia"
+title = "Australia"
 desRegion = "Oceania"
 description = "Sydney Pride! 🏳️‍🌈"
 startDate = "2019-02-23"
@@ -1714,7 +1692,7 @@ endDate = "2019-03-10"
 linkAlbum = ""
 
 [[trips]]
-destination = "Berlin + Zurich + Paris"
+title = "Berlin + Zurich + Paris"
 desRegion = "Europe"
 description = ""
 startDate = "2020-01-24"
@@ -1723,7 +1701,7 @@ linkAlbum = ""
 
 
 [[trips]]
-destination = "Berlin + Zurich + Paris"
+title = "Berlin + Zurich + Paris"
 desRegion = "Europe"
 description = ""
 startDate = "2020-01-24"
@@ -1731,7 +1709,7 @@ endDate = "2020-02-08"
 linkAlbum = ""
 
 [[trips]]
-destination = "San Diego + San Francisco"
+title = "San Diego + San Francisco"
 desRegion = "North America"
 description = ""
 startDate = "2020-03-04"
@@ -1739,7 +1717,7 @@ endDate = "2020-03-12"
 linkAlbum = ""
 
 [[trips]]
-destination = "San Francisco + Palm Desert"
+title = "San Francisco + Palm Desert"
 desRegion = "North America"
 description = ""
 startDate = "2020-07-27"
@@ -1747,7 +1725,7 @@ endDate = "2020-08-10"
 linkAlbum = ""
 
 [[trips]]
-destination = "The Yucatan trips"
+title = "The Yucatan trips"
 desRegion = "North America"
 description = ""
 startDate = "2021-01-04"
@@ -1755,7 +1733,7 @@ endDate = "2021-01-25"
 linkAlbum = ""
 
 [[trips]]
-destination = "Paris + Sète"
+title = "Paris + Sète"
 desRegion = "Europe"
 description = "Disneyland Paris and Sète"
 startDate = "2022-08-14"
@@ -1763,7 +1741,7 @@ endDate = "2023-08-28"
 linkAlbum = ""
 
 [[trips]]
-destination = "Puerto Vallarta + Mexico City"
+title = "Puerto Vallarta + Mexico City"
 desRegion = "North America"
 description = "New Year's on the beach and the New Year in the CDMX"
 startDate = "2021-12-28"
@@ -1771,7 +1749,7 @@ endDate = "2023-01-10"
 linkAlbum = ""
 
 [[trips]]
-destination = "Alaska + Seattle"
+title = "Alaska + Seattle"
 desRegion = "North America"
 description = "Flew up to Anchorage to hang with some friends then headed down to Seattle to teach at Neurohackademy"
 startDate = "2022-07-22"
@@ -1779,7 +1757,7 @@ endDate = "2022-08-05"
 linkAlbum = ""
 
 [[trips]]
-destination = "Lakeshore Limited + California Zephyr"
+title = "Lakeshore Limited + California Zephyr"
 desRegion = "North America"
 description = "NYC > Chicago > Denver > Austin > Denver > Glenwood Springs > Salt Lake City > Park City > SF"
 startDate = "2022-10-06"
@@ -1918,7 +1896,7 @@ endDate = "2022-10-30"
 linkAlbum = ""
 
 [[trips]]
-destination = "Los Angeles + San Diego"
+title = "Los Angeles + San Diego"
 desRegion = "North America"
 description = """Was supposed to be a 🚂 adventure as well but 
 Amtrak's Pacific Surfliner got effed up in a storm before going.
@@ -1959,7 +1937,7 @@ endDate = "2022-11-09"
 linkAlbum = ""
 
 [[trips]]
-destination = "Brazil"
+title = "Brazil"
 desRegion = "South America"
 description = "Rio, Salvador, and São Paulo"
 startDate = "2022-12-29"
@@ -2014,7 +1992,7 @@ linkAlbum = ""
 
 
 [[trips]]
-destination = "Crescent Line + Sunset Limited + Pacific Surfliner"
+title = "Crescent Line + Sunset Limited + Pacific Surfliner"
 desRegion = "North America"
 description = """
 NYC > Charlotte > Atlanta > New Orleans > Houston > 
@@ -2151,7 +2129,7 @@ endDate = "2023-03-29"
 linkAlbum = ""
 
 [[trips]]
-destination = "Oaxaca beaches"
+title = "Oaxaca beaches"
 desRegion = "North America"
 description = "San Diego, Mexico City, Puerto Escondido, and Zipolite"
 startDate = "2023-03-30"
@@ -2219,7 +2197,7 @@ endDate = "2023-04-11"
 linkAlbum = ""
 
 [[trips]]
-destination = "European stays"
+title = "European stays"
 desRegion = "Europe"
 description = "Switzerland, France, Spain, Germany, Poland, and Hungary"
 startDate = "2023-04-28"
@@ -2504,7 +2482,7 @@ endDate = "2023-08-18"
 linkAlbum = ""
 
 [[trips]]
-destination = "Puerto Rico"
+title = "Puerto Rico"
 desRegion = "Carribean"
 description = "San Juan, El Yunque, Ponce, and the Cavern"
 startDate = "2023-10-03"
@@ -2512,7 +2490,7 @@ endDate = "2023-10-11"
 linkAlbum = ""
 
 [[trips]]
-destination = "New Mexico"
+title = "New Mexico"
 desRegion = "North America"
 description = "Alburquerque, and Santa Fe"
 startDate = "2023-10-12"
@@ -2521,7 +2499,7 @@ linkAlbum = ""
 
 
 [[trips]]
-destination = "California"
+title = "California"
 desRegion = "North America"
 description = "Los Angeles, San Francisco, Napa, and the Redwoods"
 startDate = "2023-11-04"
@@ -2632,6 +2610,28 @@ description = ""
 startDate = "2023-12-11"
 endDate = "2023-12-20"
 linkAlbum = ""
+
+# [[trips]]
+# destination = ""
+# description = ""
+# startDate = ""
+# endDate = ""
+# linkAlbum = ""
+
+# [[trips.stays]]
+# origin = ""
+# oriCountry = ""
+# oriTravelCode = ""
+# destination = ""
+# desCountry = ""
+# desTravelCode = ""
+# transportation = "✈️"
+# carrier = ""
+# carrierCode = ""
+# description = ""
+# startDate = ""
+# endDate = ""
+# linkAlbum = ""
 
 # WKT,name,description
 # "POINT (-80.84312669999997 35.2270869)",Charlotte,1987-2005

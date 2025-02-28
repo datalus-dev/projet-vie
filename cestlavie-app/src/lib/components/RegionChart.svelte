@@ -4,7 +4,7 @@
     import Radar from './_components/Radar.svelte';
     import AxisRadial from './_components/AxisRadial.svelte';
   
-    let { trips } = $props();
+    let { trips, filter=$bindable() } = $props();
     const xKey = Object.keys(trips[0]);
     let xmax = Math.max(...Object.values(trips[0]));
 
@@ -19,7 +19,7 @@
       data={trips}
     >
       <Svg>
-        <AxisRadial />
+        <AxisRadial bind:filter={filter} />
         <Radar />
       </Svg>
     </LayerCake>
