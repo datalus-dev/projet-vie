@@ -66,5 +66,9 @@
     "vitest": "^1.2.0"
   },
   "type": "module",
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.6.0",
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.49.1"
+  }
 }

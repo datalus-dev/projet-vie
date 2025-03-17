@@ -1,6 +1,6 @@
-export const prerender = true
+// export const prerender = true
 
-export const load = async ({ url, fetch }) => {
+export const load = async ({ url, fetch, locals: {supabase} }) => {
     const Res = await fetch(`${url.origin}/api/scrapbook/stub_text_extraction.toml`)
     const collection = await Res.json()
 
@@ -10,5 +10,7 @@ export const load = async ({ url, fetch }) => {
     
     const path = '/images/thumbnails/stubs';
 
-    return { collection, path, pages }
+    const { data: contents } = await supabase.from('content').select('content, contentType')
+
+    return { collection, path, pages, contents }
 }

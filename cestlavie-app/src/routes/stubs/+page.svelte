@@ -14,7 +14,7 @@
 	<title>Ticket Stubs Gallery</title>
 </svelte:head>
 
-<h1>Ticket Stubs</h1>   
+<h1>Ticket Stubs</h1>
 
 <div>
 	<Gallery {path} {items} />

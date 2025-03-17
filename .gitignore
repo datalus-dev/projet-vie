@@ -4,4 +4,6 @@
 /cestlavie_app_archive
 /cestlavie-app/.yarn
 .idea
-
+# removing the package-lock.json since there is currently an open issue
+# on npm cli (https://github.com/npm/cli/issues/4828)
+cestlavie-app/package-lock.json

@@ -4,26 +4,36 @@
 	import IconButton, { Icon } from "@smui/icon-button";
   import { mdiClose } from '@mdi/js';
 
-  let {
-    startDate = '01 Jan 1970',
-    transportation = '✈️',
-    carrier = '',
-    destination = 'New York',
-    desTravelCode = 'JFK',
-    linkRec = '',
-    linkAlbum = '',
-  } = $props();
-  
-
   let open = $state(false);
+
+  let {
+    trip = [
+      {
+        tripId: 'tripId',
+        contentType: 'tripInfo',
+        content: {
+          startDate: '2007-05-17',
+          transportation: '🚂',
+          carrier: '',
+          carrierIATA: '2C',
+          carrierABBR: 'SNCF',
+          destination: 'Paris',
+          desTravelCode: 'PAR',
+          linkRec: '',
+          linkAlbum: '' 
+        }
+      }
+    ],
+    tripId = 'tripId'
+  } = $props();
 
 </script>
 
-<button onclick={() => (open = true)}>
+{#snippet tag(content)}
   <article>
     <div class="top">
       <p class='start'>Start of Travel:</p>
-      <p>{startDate}</p>
+      <p>{content.startDate}</p>
     </div>
     <div class="block">
       <div class="punch-hole"></div>
@@ -31,56 +41,92 @@
 
     <div class="middle">
       <p>To:</p> 
-      <div class="IATA">{desTravelCode}</div>
-      <div class="destination"><p>{destination}</p></div>
+      <div class="IATA">{content.desTravelCode}</div>
+      <div class="destination"><p>{content.destination}</p></div>
     </div>
 
     <div class="bottom">
         <!-- make larger with a circle around it -->
       <div>
-        <p>{transportation}</p>
+        <p>{content.transportation}</p>
       </div>
       <div class="carrier">
         <!-- uniform three letter -->
-        <p>{carrier}</p>
+        {#if content.carrierIATA}
+          <p class="codes">{content.carrierIATA}</p>
+        {:else if content.carrierABBR}
+          <p class="codes">{content.carrierABBR}</p>
+        {/if}
+        <p>{content.carrier}</p>
       </div>
     </div>
-      
-  
   </article>
-</button>
-<Dialog bind:open sheet aria-describedby="sheet-content">
-  <Content id="sheet-content">
-      <IconButton action="close" class="material-icons">
-          <Icon tag="svg" viewBox="0 0 24 24">
-              <path fill="currentColor" d={mdiClose} />
-          </Icon>
-      </IconButton>
-      <div class="dialog">
-        <h1>{destination}</h1>
-        {#if linkRec}
-          <p>📝 <a href={linkRec} target="_blank">Teon's Nomadic Note: Recs</a></p>
-        {/if}
-        {#if linkAlbum}
-          <p>📸 <a href={linkAlbum} target="_blank">Teon's Nomadic Note: Album</a></p>
-        {/if}
-      </div>
-  </Content>
-</Dialog>
+{/snippet}
 
+<!-- Why do I need to do [0] here? Shouldn't this evaluate to false -->
+<!-- Clean up the each -->
+<div class="tag">
+  {#if trip.filter(t => t.contentType == 'photoAlbum').length}
+    <button onclick={() => (open = true)}>
+      {#each trip as tripItem}
+        {#if tripItem.contentType == 'tripInfo'}
+          {@render tag(tripItem.content)}
+        {/if}
+      {/each}
+    </button>
+    <Dialog bind:open sheet aria-describedby="sheet-content" class="dialog">
+      <Content id="sheet-content">
+        <div>
+          <IconButton action="close" class="material-icons">
+              <Icon tag="svg" viewBox="0 0 24 24">
+                  <path fill="currentColor" d={mdiClose} />
+              </Icon>
+          </IconButton>
+        </div>
+        <div class="dialog">
+          {#each trip as tripItem}
+            {#if tripItem.contentType == 'tripInfo'}
+              <h1>{tripItem.content.destination}</h1>
+            {/if}
+          {/each}
+          {#each trip as tripItem}
+            {#if tripItem.content.linkRec}
+              <p>📝 <a href={tripItem.content.linkRec} target="_blank">Teon's Nomadic Note: Recs</a></p>
+            {/if}
+            {#if tripItem.contentType == 'photoAlbum'}
+              <p>📸 <a href={tripItem.content.link} target="_blank">Teon's Nomadic Note: Album</a></p>
+            {/if}
+          {/each}
+        </div>
+      </Content>
+    </Dialog>
+  {:else}
+    {#each trip as tripItem}
+      {@render tag(tripItem.content)}
+    {/each}
+  {/if}
+</div>
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
 
-    /* .block {
-      display: flex;
+    .tag {
+      display: grid;
       justify-content: center;
       align-items: center;
-    } */
+    }
+    
+    .dialog {
+      display: grid;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem auto;  
+    }
 
     article {
     width: 150px;
-    height: 300px;
+    height: 350px;
     margin: 1rem auto;
     /* display: flex; */
     display: block;
@@ -94,6 +140,11 @@
     p {
       color: #343E6F;
     }
+
+    .top {
+      height: 4rem;
+    }
+  
     .top p {
     text-transform: uppercase;
     font-size: .5rem;
@@ -105,11 +156,30 @@
     margin-bottom: 1rem;
     }
 
+    .block {
+      height: 3rem;
+    }
+    
+    .middle {
+      height: 6rem;
+    }
+
     .middle p {
       text-align: left;
       color: #343E6F;
       font-family: 'Open Sans', sans-serif;
       font-size: .75rem;
+    }
+
+    .bottom {
+      height: 3rem;
+    }
+    
+    .bottom p {
+      text-align: center;
+      color: #343E6F;
+      /* font-family: 'Open Sans', sans-serif; */
+      /* font-size: .75rem; */
     }
 
     .punch-hole {
@@ -156,15 +226,21 @@
     text-align: center;
     }
 
+    .codes {
+      font-family: 'Squada One', cursive;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+
     .carrier {
       font-family: 'Squada One', cursive;
     }
 
     button {
       background-color: rgba(0,0,0,0);
-      border: 0; 
+      border: 0;
+      padding: 1rem;
     }
-
     button:hover {
       box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
