@@ -3,26 +3,31 @@
     import TravelTag from '$lib/components/TravelTag.svelte'
 
     let { data } = $props();
-    let { logTravel, recs } = data;
+    let { logTravel, recs, travel, travelGroupBy } = data;
 
     let { recommendations } = recs;
     let filter = $state('');
 
-    logTravel.trips.forEach((trip, idx) => {
-        if (trip.stays) {
-            trip.stays.forEach((stay, idy) => {
-                let rec = recommendations.filter(r => r.destination == stay.destination)[0];
-                logTravel.trips[idx].stays[idy].linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
+    // logTravel.trips.forEach((trip, idx) => {
+    //     if (trip.stays) {
+    //         trip.stays.forEach((stay, idy) => {
+    //             let rec = recommendations.filter(r => r.destination == stay.destination)[0];
+    //             logTravel.trips[idx].stays[idy].linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
 
-                if (trip.linkAlbum) {
-                    logTravel.trips[idx].stays[idy].linkAlbum = trip.linkAlbum
-                }
-            })
-        }
+    //             if (trip.linkAlbum) {
+    //                 logTravel.trips[idx].stays[idy].linkAlbum = trip.linkAlbum
+    //             }
+    //         })
+    //     }
+    // });
+
+    travel.forEach((trip, idx) => {
+        let rec = recommendations.filter(r => r.destination == trip.content.destination)[0];
+        travel[idx].content.linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
     });
 
     let trips = Object.groupBy(logTravel.trips, ({desRegion}) => desRegion);
-    let aggTrips = {};
+    let aggTrips = new Map;
     Object.entries(trips).map(([region, arr]) => (aggTrips[region] = arr.length))
     aggTrips = [aggTrips];
 
@@ -46,7 +51,7 @@
     </div>
 </div>
 
-<div class="tags">
+<!-- <div class="tags">
     {#each logTravel['trips'] as trip}
         {#if filter == '' || trip['desRegion'] == filter}
             {#if trip['stays']}
@@ -54,6 +59,15 @@
                 <TravelTag {...stay}/>
                 {/each}
             {/if}
+        {/if}
+    {/each}
+</div> -->
+
+<div class="tags">
+    {#each Object.entries(travelGroupBy) as [tripId, trip]}
+        <!-- Logical or returns array even when it's empty -->
+        {#if filter == '' || trip.filter(t => t['content']['desRegion'] == filter)[0]}
+            <TravelTag {tripId} {trip} />
         {/if}
     {/each}
 </div>

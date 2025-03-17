@@ -1,0 +1,194 @@
+# carrierIATA API: https://api.developer.carrierIATA.org/hub/
+# carrierICAO API: https://www.carrierICAO.int/Aviation-API-Data-Service/Pages/default.aspx
+# [""]
+# transportation = ""
+# carrierIATA = ""
+# carrierICAO = ""
+
+["Aeromexico"]
+transportation = "✈️"
+carrierIATA = "AM"
+carrierICAO = "AMX"
+
+["Air Berlin"]
+transportation = "✈️"
+carrierIATA = "AB"
+carrierICAO = "BER"
+
+["Air France"]
+transportation = "✈️"
+carrierIATA = "AF"
+carrierICAO = "AFR"
+
+["Alaska"]
+transportation = "✈️"
+carrierIATA = "AS"
+carrierICAO = "ASA"
+
+["American"]
+transportation = "✈️"
+carrierIATA = "AA"
+carrierICAO = "AAL"
+
+["Amtrak"]
+transportation = "🚂"
+carrierIATA = "2V"
+carrierABBR = "AMTK"
+
+["ANA"]
+transportation = "✈️"
+carrierIATA = "NH"
+carrierICAO = "ANA"
+
+["Austrian"]
+transportation = "✈️"
+carrierIATA = "OS"
+carrierICAO = "AUA"
+
+["Avianca"]
+transportation = "✈️"
+carrierIATA = "AV"
+carrierICAO = "AVA"
+
+["Delta"]
+transportation = "✈️"
+carrierIATA = "DL"
+carrierICAO = "DEL"
+
+["Deutsche Bahn"]
+transportation = "🚂"
+carrierABBR = "DB"
+link = "https://en.wikipedia.org/wiki/List_of_Deutsche_Bahn_station_codes"
+
+["EasyJet"]
+transportation = "✈️"
+carrierIATA = "U2"
+carrierICAO = "EZY"
+
+["Etihad"]
+transportation = "✈️"
+carrierIATA = "EY"
+carrierICAO = "ETD"
+
+["Eurostar"]
+transportation = "🚂"
+carrierIATA = "9F"
+carrierABBR = "EUR"
+
+["Flixbus"]
+transportation = "🚌"
+carrierIATA = ""
+carrierICAO = ""
+carrierABBR = "FLX"
+
+["Gol"]
+transportation = "✈️"
+carrierIATA = "G3"
+carrierICAO = "GLO"
+
+["Icelandair"]
+transportation = "✈️"
+carrierIATA = "FI"
+carrierICAO = "ICE"
+
+["Jetblue"]
+transportation = "✈️"
+carrierIATA = "B6"
+carrierICAO = "JBU"
+
+["LATAM"]
+transportation = "✈️"
+carrierIATA = "LA"
+carrierICAO = "LAN"
+
+["Norwegian"]
+transportation = "✈️"
+carrierIATA = "DY"
+carrierICAO = "NOZ"
+
+["Norse"]
+transportation = "✈️"
+carrierIATA = "N0"
+carrierICAO = "NBT"
+
+["Ryanair"]
+transportation = "✈️"
+carrierIATA = "FR"
+carrierICAO = "RYR"
+
+["Renfe"]
+transportation = "🚂"
+carrierIATA = "4R"
+carrierABBR = "RENFE"
+
+["SWISS"]
+transportation = "✈️"
+carrierIATA = "LX"
+carrierICAO = "SWR"
+
+["Southwest"]
+transportation = "✈️"
+carrierIATA = "WN"
+carrierICAO = "SWA"
+
+["SNCF"]
+transportation = "🚂"
+carrierIATA = "2C"
+carrierABBR = "SNCF"
+
+["TAM"]
+transportation = "✈️"
+carrierIATA = "JJ"
+carrierICAO = "TAM"
+note = "Merged with LAN in 2012."
+
+["Thalys"]
+transportation = "🚂"
+carrierIATA = "2H"
+carrierABBR = "THALYS"
+
+["Trenitalia"]
+transportation = "🚂"
+carrierIATA = "7T"
+carrierABBR = "FS"
+
+["United"]
+transportation = "✈️"
+carrierIATA = "UA"
+carrierICAO = "UAL"
+
+["US Airways"]
+transportation = "✈️"
+carrierIATA = "US"
+carrierICAO = "AWE"
+note = "Merged with American Airlines."
+
+["Virgin Atlantic"]
+transportation = "✈️"
+carrierIATA = "VS"
+carrierICAO = "VIR"
+
+["Viva"]
+transportation = "✈️"
+carrierIATA = "VB"
+carrierICAO = "VIV"
+
+["Volaris"]
+transportation = "✈️"
+carrierIATA = "Y4"
+carrierICAO = "VOI"
+
+["Vueling"]
+transportation = "✈️"
+carrierIATA = "VY"
+carrierICAO = "VLG"
+
+["WestJet"]
+transportation = "✈️"
+carrierIATA = "WS"
+carrierICAO = "WJA"
+
+["Wizz"]
+transportation = "✈️"
+carrierIATA = "W6"
+carrierICAO = "WZZ"

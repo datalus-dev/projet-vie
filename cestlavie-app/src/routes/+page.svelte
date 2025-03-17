@@ -1,5 +1,6 @@
 <script>
-    import { siteTitle, siteDescription, siteImage, siteImageWidth, siteAuthor, siteURL, faviconImage } from '$lib/config';    
+    import TravelTag from '$lib/components/TravelTag.svelte';
+import { siteTitle, siteDescription, siteImage, siteImageWidth, siteAuthor, siteURL, faviconImage } from '$lib/config';    
 
 </script>
     
@@ -26,18 +27,23 @@
 <p>discovery and recommendations, curated by friends</p>
 <p></p>
 
-<button class='sample' onclick={() => window.open("/stubs", "_self")}>
-    <img class="stub" src="data/labelling/images/stubs/b6fc8982-scrapbook_26-stub_06.jpg" alt="ticket stub of the Arc de Triomphe">
-</button>
+<div id="assets">
+    <button class='sample' onclick={() => window.open("/stubs", "_self")}>
+        <img class="stub" src="data/labelling/images/stubs/b6fc8982-scrapbook_26-stub_06.jpg" alt="ticket stub of the Arc de Triomphe">
+    </button>
+
+    <TravelTag onclickFcn={() => window.open("/tags", "_self")}/>
+</div>
 
 <style lang="postcss">
-.sample {
-    display: flex;
-    flex-wrap: wrap;
-    /* flex-flow: row wrap; */
-    column-gap: 30px;
-}
 
+#assets {
+    padding: 3rem;
+    width: 80vw;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
 button {
     padding: 0;
     border: none;
@@ -47,4 +53,5 @@ button {
 button:hover {
     cursor: pointer;
 }
+
 </style>
