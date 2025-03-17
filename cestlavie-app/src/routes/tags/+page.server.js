@@ -1,4 +1,4 @@
-// export const prerender = true
+export const prerender = true
 
 export const load = async ({ url, fetch, locals: {supabase} }) => {
     const travelRes = await fetch(`${url.origin}/api/logs/log-travel.toml`)

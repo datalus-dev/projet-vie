@@ -96,6 +96,11 @@ transportation = "✈️"
 carrierIATA = "B6"
 carrierICAO = "JBU"
 
+["KLM"]
+transportation = "✈️"
+carrierIATA = "KL"
+carrierICAO = "KLM"
+
 ["LATAM"]
 transportation = "✈️"
 carrierIATA = "LA"

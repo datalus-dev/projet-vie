@@ -15,9 +15,9 @@ trips = travel['trips']
 content = list()
 trip_id = uuid.uuid4()
 for trip in trips:
-    del trip['startDate'], trip['endDate']
     title = trip['title']
     if 'stays' in trip.keys():
+        del trip['startDate'], trip['endDate']
         trip_stays = trip.pop('stays')
         for stay in trip_stays:
             stay.update(trip)
