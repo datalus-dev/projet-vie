@@ -1,6 +1,7 @@
 <script>
+    import StubWithPin from '$lib/components/StubWithPin.svelte';
     import TravelTag from '$lib/components/TravelTag.svelte';
-import { siteTitle, siteDescription, siteImage, siteImageWidth, siteAuthor, siteURL, faviconImage } from '$lib/config';    
+    import { siteTitle, siteDescription, siteImage, siteImageWidth, siteAuthor, siteURL, faviconImage } from '$lib/config';    
 
 </script>
     
@@ -28,22 +29,31 @@ import { siteTitle, siteDescription, siteImage, siteImageWidth, siteAuthor, site
 <p></p>
 
 <div id="assets">
-    <button class='sample' onclick={() => window.open("/stubs", "_self")}>
+    <button class='sample' onclick={() => window.open("/u/teon/stubs", "_self")}>
         <img class="stub" src="data/labelling/images/stubs/b6fc8982-scrapbook_26-stub_06.jpg" alt="ticket stub of the Arc de Triomphe">
     </button>
-
-    <TravelTag onclickFcn={() => window.open("/tags", "_self")}/>
+    <button onclick={() => window.open("/u/teon/tags", "_self")}>
+        <TravelTag />
+    </button>
 </div>
 
-<style lang="postcss">
+<style>
 
 #assets {
-    padding: 3rem;
-    width: 80vw;
-    display: flex;
-    justify-content:space-around;
+    width: 100vw;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25rem);
+    justify-content:center;
     align-items: center;
+    row-gap: 3rem;
 }
+
+h1 {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
 button {
     padding: 0;
     border: none;

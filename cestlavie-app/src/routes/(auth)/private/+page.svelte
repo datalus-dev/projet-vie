@@ -85,7 +85,6 @@
 		{username[0].username}
 	{:else}
 		Username not yet set.
-		{console.log(username)}
 	{/if}
 </h2>
 <form id="usernameInfo" onsubmit={handleSubmitUsername}>
