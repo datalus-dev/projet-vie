@@ -5,10 +5,11 @@
 	import type { PageData } from './$types';
 
 	let { data } = $props();
-	let { notes, acls, supabase, user } = $derived(data);
+	let { notes, acls, supabase, user, username } = $derived(data);
 
 	let circles = $state([]);
 	let sharer_email = $state('');
+	let usernameSubmit = $state('');
 	let levels = ['friends', 'close friends'];
 
 
@@ -46,6 +47,22 @@
 		invalidate('supabase:db:acl');
 		form.reset();
 	};
+
+	const handleSubmitUsername: EventHandler<SubmitEvent, HTMLFormElement> = async (evt) => {
+		evt.preventDefault();
+		if (!evt.target) return;
+
+		const form = evt.target as HTMLFormElement;
+
+		const username = (new FormData(form).get('username') ?? '') as string;
+		if (!username) return;
+
+		const { error } = await supabase.from('usernames').insert({ username });
+		if (error) console.error(error);
+
+		invalidate('supabase:db:usernames');
+		form.reset();
+	};
 </script>
 
 <h1>Private page for user: {user?.email}</h1>
@@ -62,6 +79,21 @@
 		<input name="note" type="text" />
 	</label>
 </form> -->
+
+<h2>Your Username: 
+	{#if username.length > 0}
+		{username[0].username}
+	{:else}
+		Username not yet set.
+		{console.log(username)}
+	{/if}
+</h2>
+<form id="usernameInfo" onsubmit={handleSubmitUsername}>
+	<label>
+		<input type="text" name="username" bind:value={usernameSubmit} />
+	</label>
+</form>
+<button type="submit" form="usernameInfo" value="Submit">Submit</button>
 
 <h2>My Circles</h2>
 <ul>

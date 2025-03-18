@@ -1,7 +1,7 @@
 <script>
 	import Carousel from "$lib/components/Carousel.svelte";
 	
-	export let data;
+	let { data } = $props();
 
 	// consider using the route as the property name for the collection
 	const images = data.pages;
