@@ -74,5 +74,6 @@ linkRec = "https://maps.app.goo.gl/XdwANGqsqrjWEmkF7"
 destination = "Zurich"
 linkRec = "https://maps.app.goo.gl/DMYmPXCuCrb122YN7"
 
-
-[[recommendations]]
+# [[recommendations]]
+# destination = ""
+# linkRec = ""

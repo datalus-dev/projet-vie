@@ -82,7 +82,7 @@
 
 <h2>Your Username: 
 	{#if username.length > 0}
-		{username[0].username}
+		<a href="/u/{username[0].username}">{username[0].username}</a>
 	{:else}
 		Username not yet set.
 	{/if}

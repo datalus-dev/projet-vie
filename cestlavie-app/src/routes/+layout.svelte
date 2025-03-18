@@ -1,8 +1,7 @@
 <!-- This is the global layout file; it "wraps" every page on the site. (Or more accurately: is the parent component to every page component on the site.) -->
 <script>
 	import { run } from 'svelte/legacy';
-	import '../app.css';
-	import { siteTitle, siteURL } from '$lib/config.js';
+	import { siteTitle, siteURL, siteAuthor, siteDescription, faviconImage, siteImageWidth } from '$lib/config.js';
 	// use default svelte-material-ui css
 	import '$lib/../../node_modules/svelte-material-ui/bare.css';
 	import Header from '$lib/components/Header.svelte';
@@ -65,6 +64,21 @@
 	<link rel="stylesheet" href="/css/typography.css" />
 	<link rel="stylesheet" href="/css/utilities.css" />
 	<link rel="stylesheet" href="/css/vars.css" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta data-key="description" name="description" content="{siteDescription}">
+    <meta name="author" content={siteAuthor}>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg" href={faviconImage} />
+	<!-- Open Graph -->
+	<meta property="og:type" content="profile" />
+	<meta property="og:url" content={siteURL}>
+	<meta property="og:title" content={siteTitle} />
+	<meta property="og:description" content={siteDescription} />
+	<meta property="og:image" content={faviconImage} />
+	<meta property="og:image:width" content={siteImageWidth} />
+	<meta property="og:image:height" content={siteImageWidth} />
 </svelte:head>
 
 <div class="layout" class:open={isMenuOpen}>

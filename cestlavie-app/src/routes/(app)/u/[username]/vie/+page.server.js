@@ -1,4 +1,4 @@
-export const prerender = true
+// export const prerender = true
 
 export const load = async ({ url, fetch }) => {
     const Res = await fetch(`${url.origin}/api/scrapbook/stub_text_extraction.toml`)

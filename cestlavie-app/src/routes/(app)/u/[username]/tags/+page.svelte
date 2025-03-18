@@ -5,15 +5,17 @@
     let { data } = $props();
     let { recs, travelGroupBy } = data;
 
-    let { recommendations } = recs;
     let filter = $state('');
 
+    // figure out to deal with logout and content still being available
     let regionAgg = [];
     Object.entries(travelGroupBy).forEach(([tripId, trip]) => {
         trip?.forEach((t, idx) => {
             if (t.contentType == 'tripInfo') {
-                let rec = recommendations.filter(r => r.destination == t.content.destination)[0];
-                travelGroupBy[tripId][idx].content.linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
+                if (recs.length > 0) {
+                    let rec = recs.filter(r => r.content.destination == t.content.destination)[0];
+                    travelGroupBy[tripId][idx].content.linkRec = typeof rec === 'undefined' ? '' : rec.content['link'];
+                }
                 regionAgg.push({desRegion: t.content.desRegion, tripId: tripId});
             }
         })

@@ -128,8 +128,8 @@
     }
 
     article {
-    width: 7rem;
-    height: 24rem;
+    width: 8rem;
+    height: 30rem;
     /* margin: 1rem auto; */
     /* display: flex; */
     /* display: block; */
