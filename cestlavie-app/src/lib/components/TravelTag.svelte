@@ -168,7 +168,7 @@
     }
     
     .middle {
-      height: 6rem;
+      height: 7rem;
     }
 
     .middle p {
@@ -231,6 +231,7 @@
     width: 100%;
     font-size: 2.5rem;
     text-align: center;
+    min-height: 4rem;
     }
 
     .codes {
