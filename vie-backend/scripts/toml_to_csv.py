@@ -13,13 +13,14 @@ travel = toml.load(open('log-travel.toml'))
 trips = travel['trips']
 
 content = list()
-trip_id = uuid.uuid4()
 for trip in trips:
+    trip_id = uuid.uuid4()
     title = trip['title']
     if 'stays' in trip.keys():
         del trip['startDate'], trip['endDate']
         trip_stays = trip.pop('stays')
         for stay in trip_stays:
+            stay_id = uuid.uuid4()
             stay.update(trip)
             if 'carrier' in stay and stay['carrier']:
                 stay.update(transpLookup[stay['carrier']])
@@ -32,26 +33,26 @@ for trip in trips:
                            'title': title,
                            'visibility': 'private',
                            'id': uuid.uuid4(),
-                           'tripId': trip_id}
+                           'tripId': trip_id,
+                           'stayId': stay_id}
                     content.append(row)
             row = {'contentType': 'tripInfo',
                    'content': json.dumps(stay),
                    'title': title,
                    'visibility': 'public',
                    'id': uuid.uuid4(),
-                   'tripId': trip_id}
-
+                   'tripId': trip_id,
+                   'stayId': stay_id}
             content.append(row)
-            trip_id = uuid.uuid4()
     else:
         row = {'contentType': 'tripInfo',
                'content': json.dumps(trip),
                'title': title,
                'visibility': 'public',
                'id': uuid.uuid4(),
-               'tripId': trip_id}
+               'tripId': trip_id,
+               'stayId': trip_id}
         content.append(row)
-        trip_id = uuid.uuid4()
 
 df = pd.DataFrame.from_dict(content)
 df.index.name = 'index'

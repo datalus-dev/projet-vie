@@ -1295,8 +1295,8 @@ linkAlbum = ""
 title = "Abu Dhabi + Paris"
 desRegion = "Asia"
 description = "Experimental Approaches to Arabic and other understudied Languages (EXAL+)"
-startDate = "2019-01-30"
-endDate = "2019-02-02"
+startDate = "2015-01-30"
+endDate = "2015-02-02"
 linkAlbum = ""
 
 [[trips.stays]]
@@ -1309,7 +1309,7 @@ desTravelCode = "ADH"
 transportation = "✈️"
 carrier = "Air France"
 description = ""
-startDate = "2016-01-13"
+startDate = "2015-01-13"
 endDate = "2015-01-19"
 linkAlbum = ""
 
@@ -1323,7 +1323,7 @@ desTravelCode = "CDG"
 transportation = "✈️"
 carrier = "Air France"
 description = ""
-startDate = "2016-01-19"
+startDate = "2015-01-19"
 endDate = "2015-01-28"
 linkAlbum = ""
 
@@ -1790,14 +1790,6 @@ desRegion = "North America"
 description = "RStudio Workshop Co-Teaching"
 startDate = "2019-09-13"
 endDate = "2019-09-15"
-linkAlbum = ""
-
-[[trips]]
-title = "Australia"
-desRegion = "Oceania"
-description = "Sydney Pride! 🏳️‍🌈"
-startDate = "2019-02-23"
-endDate = "2019-03-10"
 linkAlbum = ""
 
 [[trips]]
@@ -2561,6 +2553,7 @@ description = "San Juan, El Yunque, Ponce, and the Cavern"
 startDate = "2023-10-03"
 endDate = "2023-10-11"
 linkAlbum = ""
+destination = "San Juan"
 
 [[trips]]
 title = "New Mexico"

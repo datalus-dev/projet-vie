@@ -3,43 +3,29 @@
     import TravelTag from '$lib/components/TravelTag.svelte'
 
     let { data } = $props();
-    let { logTravel, recs, travel, travelGroupBy } = data;
+    let { recs, travelGroupBy } = data;
 
     let { recommendations } = recs;
     let filter = $state('');
 
-    // logTravel.trips.forEach((trip, idx) => {
-    //     if (trip.stays) {
-    //         trip.stays.forEach((stay, idy) => {
-    //             let rec = recommendations.filter(r => r.destination == stay.destination)[0];
-    //             logTravel.trips[idx].stays[idy].linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
-
-    //             if (trip.linkAlbum) {
-    //                 logTravel.trips[idx].stays[idy].linkAlbum = trip.linkAlbum
-    //             }
-    //         })
-    //     }
-    // });
-
-    travel.forEach((trip, idx) => {
-        let rec = recommendations.filter(r => r.destination == trip.content.destination)[0];
-        travel[idx].content.linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
+    let regionAgg = [];
+    Object.entries(travelGroupBy).forEach(([tripId, trip]) => {
+        trip?.forEach((t, idx) => {
+            if (t.contentType == 'tripInfo') {
+                let rec = recommendations.filter(r => r.destination == t.content.destination)[0];
+                travelGroupBy[tripId][idx].content.linkRec = typeof rec === 'undefined' ? '' : rec['linkRec'];
+                regionAgg.push({desRegion: t.content.desRegion, tripId: tripId});
+            }
+        })
     });
 
-    let trips = Object.groupBy(logTravel.trips, ({desRegion}) => desRegion);
-    let aggTrips = new Map;
+    let trips = Object.groupBy(regionAgg, ({desRegion}) => desRegion);
+    let aggTrips = new Object();
     Object.entries(trips).map(([region, arr]) => (aggTrips[region] = arr.length))
+    // Filter US from the Rest of World
     aggTrips = [aggTrips];
 
 </script>
-
-<!-- // 1. this will be a page that pulls from the posts using the api for all the travel tagged posts
-// 2. will store a private md file for each album that contains the album link and the narrative 
-<svelte:head>
-	<title>Travel</title>
-</svelte:head>
-
-🚧 To Be Completed 🚧 -->
 
 <h1>Places Visited</h1>
 <div>
@@ -51,23 +37,12 @@
     </div>
 </div>
 
-<!-- <div class="tags">
-    {#each logTravel['trips'] as trip}
-        {#if filter == '' || trip['desRegion'] == filter}
-            {#if trip['stays']}
-                {#each trip['stays'] as stay}
-                <TravelTag {...stay}/>
-                {/each}
-            {/if}
-        {/if}
-    {/each}
-</div> -->
 
 <div class="tags">
-    {#each Object.entries(travelGroupBy) as [tripId, trip]}
+    {#each Object.entries(travelGroupBy) as [stayId, trip]}
         <!-- Logical or returns array even when it's empty -->
         {#if filter == '' || trip.filter(t => t['content']['desRegion'] == filter)[0]}
-            <TravelTag {tripId} {trip} />
+            <TravelTag {stayId} {trip} />
         {/if}
     {/each}
 </div>
@@ -99,11 +74,3 @@
     }
 
 </style>
-
-    <!-- <TravelTag /> -->
-
-<!-- {logTravel['id']['name']} -->
-
-<!-- {travelLog['id']} -->
-
-<!-- {#each } -->

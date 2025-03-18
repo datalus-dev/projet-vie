@@ -9,6 +9,7 @@
   let {
     trip = [
       {
+        stayId: 'stayId',
         tripId: 'tripId',
         contentType: 'tripInfo',
         content: {
@@ -128,7 +129,7 @@
 
     article {
     width: 7rem;
-    height: 22rem;
+    height: 24rem;
     /* margin: 1rem auto; */
     /* display: flex; */
     /* display: block; */
