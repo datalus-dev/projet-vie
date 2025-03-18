@@ -33,7 +33,7 @@
   <article>
     <div class="top">
       <p class='start'>Start of Travel:</p>
-      <p>{content.startDate}</p>
+      <p class='date'>{content.startDate}</p>
     </div>
     <div class="block">
       <div class="punch-hole"></div>
@@ -56,8 +56,10 @@
           <p class="codes">{content.carrierIATA}</p>
         {:else if content.carrierABBR}
           <p class="codes">{content.carrierABBR}</p>
+        {:else}
+          <p class="codes"></p>
         {/if}
-        <p>{content.carrier}</p>
+        <p class="carrierFullName">{content.carrier}</p>
       </div>
     </div>
   </article>
@@ -125,16 +127,16 @@
     }
 
     article {
-    width: 150px;
-    height: 350px;
-    margin: 1rem auto;
+    width: 7rem;
+    height: 22rem;
+    /* margin: 1rem auto; */
     /* display: flex; */
-    display: block;
+    /* display: block; */
     justify-content: space-between;
     flex-flow: column;
     background-color: #DBD2B2;
     clip-path: polygon(15% 0, 85% 0, 100% 10%, 100% 100%, 0 100%, 0 10%);
-    padding: 1rem 20px;
+    padding: 1rem 1rem;
     }
 
     p {
@@ -147,13 +149,18 @@
   
     .top p {
     text-transform: uppercase;
-    font-size: .5rem;
+    font-size: .75rem;
     text-align: center;
     align-self: center;
     font-family: 'Open Sans', sans-serif;
     color: #343E6F;
     /* margin-top: 20px; */
-    margin-bottom: 1rem;
+    margin-bottom: .25rem;
+    }
+
+    .top .date {
+      font-family: 'Squada One', cursive;
+      font-size: .75rem;
     }
 
     .block {
@@ -183,10 +190,10 @@
     }
 
     .punch-hole {
-    height: 40px;
-    width: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
     background-color: #906B39;
-    border-radius: 100px;
+    border-radius: 6rem;
     display: flex;
     box-shadow: 2px 2px 2px rgba(0,0,0, .85);
     margin: auto;
@@ -194,8 +201,8 @@
 
     .punch-hole:before {
     content: "";
-    width: 20px;
-    height: 20px;
+    width: 1rem;
+    height: 1rem;
     background-color: #062B60;
     border-radius: 100px;
     display: inline-block;
@@ -216,7 +223,7 @@
     }
 
     .IATA {
-    margin-top: -10px;
+    margin-top: -.5rem;
     font-family: 'Squada One', cursive;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -230,6 +237,8 @@
       font-family: 'Squada One', cursive;
       text-transform: uppercase;
       font-size: 1.5rem;
+      /* figure out a better way to maintain distance */
+      min-height: 2.25rem;
     }
 
     .carrier {
@@ -248,6 +257,10 @@
     .dialog h1 {
       font-size: xx-large;
       color: #343E6F;
+    }
+
+    .carrierFullName {
+      font-size: 1rem;
     }
 
 </style>

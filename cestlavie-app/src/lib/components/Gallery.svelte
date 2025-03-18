@@ -28,8 +28,9 @@
 
 	#wrapper {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		/* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+		grid-template-columns: repeat(auto-fit, 10rem);
 		row-gap: 50px;
-		column-gap: 25px;
+		column-gap: 1rem;
 	}
 </style>

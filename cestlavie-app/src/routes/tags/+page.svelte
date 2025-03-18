@@ -76,9 +76,10 @@
     .tags {
         width: 100vw;
         display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		row-gap: 50px;
-		column-gap: 25px;
+		grid-template-columns: repeat(auto-fit, 8rem);
+		row-gap: 3rem;
+		column-gap: 5rem;
+        justify-content: center;
     }
 
     .chart {
