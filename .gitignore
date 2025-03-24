@@ -1,7 +1,7 @@
 *.DS_Store
 *.ipynb_checkpoints/*
 /data
-/cestlavie_app_archive
+/cestlavie-archive
 /cestlavie-app/.yarn
 .idea
 # removing the package-lock.json since there is currently an open issue
