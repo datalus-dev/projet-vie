@@ -1,5 +1,4 @@
 <script>
-	import StubCard from './StubCard.svelte';
 	import StubWithPin from './StubWithPin.svelte';
 
 	let { items = [], path } = $props();
@@ -7,7 +6,6 @@
 </script>
 
 <article id="portfolio" class="panel">
-	<!-- <LayoutGrid> -->
 	<div id="wrapper">
 		{#each items as item}
 			<div class="cell">
@@ -15,7 +13,6 @@
 			</div>
 		{/each}
 	</div>
-	<!-- </LayoutGrid> -->
 </article>
 
 <style>

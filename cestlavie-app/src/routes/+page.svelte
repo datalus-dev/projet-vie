@@ -15,7 +15,7 @@
 <p></p>
 
 <div id="assets">
-    <button class='sample' onclick={() => window.open("/u/teon/stubs", "_self")}>
+    <button class='sample' onclick={() => location.href="/u/teon/stubs"}>
         <img class="stub" src="data/labelling/images/stubs/b6fc8982-scrapbook_26-stub_06.jpg" alt="ticket stub of the Arc de Triomphe">
     </button>
     <button onclick={() => window.open("/u/teon/tags", "_self")}>
@@ -26,11 +26,11 @@
 <style>
 
 #assets {
-    width: 100vw;
+    width: 75vw;
     padding: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 25rem);
-    justify-content:center;
+    grid-template-columns: 1fr 1fr;
+    justify-content:space-around;
     align-items: center;
     row-gap: 3rem;
 }

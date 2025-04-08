@@ -30,7 +30,7 @@
 </script>
 
 <h1>Places Visited</h1>
-<div>
+<div class="viz">
     <div class="chart">
         <RegionChart trips={aggTrips} bind:filter={filter} />
     </div>
@@ -39,6 +39,7 @@
     </div>
 </div>
 
+<div class="divider"></div>
 
 <div class="tags">
     {#each Object.entries(travelGroupBy) as [stayId, trip]}
@@ -50,20 +51,24 @@
 </div>
 
 <style>
+    .viz {
+        /* margin: 2rem; */
+    }
     .tags {
-        width: 100vw;
+        width: 75vw;
         display: grid;
 		grid-template-columns: repeat(auto-fit, 8rem);
 		row-gap: 3rem;
 		column-gap: 5rem;
         justify-content: center;
+        /* padding: 2rem; */
     }
 
     .chart {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100vw;
+        width: 75vw;
         padding: 50px;
         gap: 100px;
     }
@@ -72,7 +77,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0px 0px 50px 0px
     }
 
 </style>

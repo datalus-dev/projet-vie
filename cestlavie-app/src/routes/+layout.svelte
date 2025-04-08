@@ -1,9 +1,8 @@
 <!-- This is the global layout file; it "wraps" every page on the site. (Or more accurately: is the parent component to every page component on the site.) -->
 <script>
-	import { run } from 'svelte/legacy';
+	// include daisyui, tailwind css
+	import "../style.css";
 	import { siteTitle, siteURL, siteAuthor, siteDescription, faviconImage, siteImageWidth } from '$lib/config.js';
-	// use default svelte-material-ui css
-	import '$lib/../../node_modules/svelte-material-ui/bare.css';
 	import Header from '$lib/components/Header.svelte';
 	// import Footer from '$lib/components/Footer.svelte';
 	import { currentPage, isMenuOpen } from '$lib/assets/js/store';
@@ -11,19 +10,9 @@
 	import { preloadCode, invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+
 	let { data, children } = $props();
 	let { session, supabase, user } = $derived(data);
-
-	const transitionIn = { delay: 150, duration: 150 };
-	const transitionOut = { duration: 100 };
-
-	/**
-	 * Updates the global store with the current path. (Used for highlighting
-	 * the current page in the nav, but could be useful for other purposes.)
-	 **/
-	run(() => {
-		currentPage.set(data.path);
-	});
 
 	/**
 	 * This pre-fetches all top-level routes on the site in the background for faster loading.
@@ -55,22 +44,15 @@
 </script>
 
 <svelte:head>
-	<link rel="stylesheet" href="/css/animation.css" />
-	<link rel="stylesheet" href="/css/components.css" />
 	<link rel="stylesheet" href="/css/fonts.css" />
-	<link rel="stylesheet" href="/css/header-and-footer.css" />
-	<link rel="stylesheet" href="/css/layout.css" />
-	<link rel="stylesheet" href="/css/root.css" />
-	<link rel="stylesheet" href="/css/typography.css" />
-	<link rel="stylesheet" href="/css/utilities.css" />
 	<link rel="stylesheet" href="/css/vars.css" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <meta data-key="description" name="description" content="{siteDescription}">
-    <meta name="author" content={siteAuthor}>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg" href={faviconImage} />
+  <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta data-key="description" name="description" content="{siteDescription}">
+  <meta name="author" content={siteAuthor}>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg" href={faviconImage} />
 	<!-- Open Graph -->
 	<meta property="og:type" content="profile" />
 	<meta property="og:url" content={siteURL}>
@@ -82,23 +64,42 @@
 </svelte:head>
 
 <div class="layout" class:open={isMenuOpen}>
-	<div class="login">
-		<div class="buttons">
-			<button id="login" onclick={() => open('/login')}>{user?.email || 'Login'}</button>
-			{#if user?.email}
-				<button id="logout" onclick={logout}>Logout</button>
-			{/if}
+	<div class="drawer lg:drawer-open">
+		<input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+		<div class="drawer-side">
+		  <!-- <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> -->
+		  <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+			<!-- Sidebar content here -->
+      {#each navItems as navItem}
+			  <li><a href={navItem.route}>{navItem.title}</a></li>
+      {/each}
+		  </ul>
 		</div>
-	</div>
-	<Header />
-	{#key data.path}
-		<main id="main" tabindex="-1" in:fade|global={transitionIn} out:fade|global={transitionOut}>
-			{@render children()}
-		</main>
-	{/key}
-	<!-- <Footer /> -->
-</div>
+  </div>
+  <div class="body">
+    <div class="login">
+      <div class="buttons">
+        <button id="login" onclick={() => location.href='/login'}>{user?.email || 'Login'}</button>
+        {#if user?.email}
+          <button id="logout" onclick={logout}>Logout</button>
+        {/if}
+      </div>
+    </div>
+    <div class="main-content">
+      {@render children()}
+    </div>
+  </div>
+  <div class="dock dock-md lg:hidden">
+    <!-- <div class=""> -->
+    {#each navItems as navItem}
+      <button onclick={() => location.href=navItem.route}>
+        <span class="dock-label">{navItem.title}</span>
+      </button>
+    {/each}
+    <!-- </div> -->
+  </div>
 
+</div>
 <style>
 .login {
 	display: grid;
@@ -120,4 +121,16 @@ button {
 	border-radius: 8px;
 	margin: 0.25rem;
 }
+
+.main-content {
+  /* padding: 2rem; */
+  width: 75vw;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: flex-start;
+}
+
 </style>

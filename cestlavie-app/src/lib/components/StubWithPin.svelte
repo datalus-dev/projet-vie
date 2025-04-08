@@ -18,14 +18,4 @@
 
 <style>
 	@import './css/pushpin.css';
-
-	.image {
-		display: grid;
-		place-items: center;
-	}
-
-	.card:hover {
-		cursor: pointer;
-	}
-
 </style>

@@ -2,7 +2,6 @@
 <!-- https://freefrontend.com/css-tickets/ -->
 <!-- https://medhatdawoud.net/blog/5-different-ways-to-create-a-ticket-layout -->
 <script lang='ts'>
-    // import Card, {Content} from '@smui/card';
     export let title = 'title';
     export let date = 'date';
     export let location = 'location';

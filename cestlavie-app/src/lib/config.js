@@ -15,18 +15,29 @@ export const faviconImage = '/images/ticket.svg'
 // Edit this to alter the main nav menu. (Also used by the footer and mobile nav.)
 export const navItems = [
 	{
+		title: 'Home',
+		route: '/'
+	}, {
 		title: 'Users',
-		route: '/u'
+		route: '/users'
+	}, {
+		title: 'Stubs',
+		route: '/u/teon/stubs'
 	}, {
 		title: 'Tags',
-		route: '/t'
-	}, {
-		title: 'Maps',
-		route: '/m'
-	}, {
-		title: 'Calendar',
-		route: '/c'
-	}, {
+		route: '/u/teon/tags'
+	},
+	// }, {
+	// 	title: 'Maps',
+	// 	route: '/maps'
+	// }, {
+	// 	title: 'Calendars',
+	// 	route: '/calendars'
+	// }
+]
+
+export const footer = [
+	{
 		title: 'About',
 		route: '/about'
 	}

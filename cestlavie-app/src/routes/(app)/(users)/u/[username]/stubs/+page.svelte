@@ -6,7 +6,6 @@
 	// consider using the route as the property name for the collection
 	const items = data.collection.stubs;
 	const path = data.path;
-	const item = items[0];
 
 </script>
 
