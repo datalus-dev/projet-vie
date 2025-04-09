@@ -53,7 +53,9 @@
     </line>
     <!-- <rect width="0.5em" height="1em"> -->
     <!-- TODO: fix a11y -->
+    <!-- Button border doesn't show up -->
     <text
+      class="btn"
       onclick={click}
       text-anchor={anchor($config.x.length, i)}
       dy="0.35em"

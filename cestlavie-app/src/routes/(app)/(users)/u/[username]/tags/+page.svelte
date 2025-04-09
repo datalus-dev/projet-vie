@@ -31,11 +31,16 @@
 
 <h1>Places Visited</h1>
 <div class="viz">
-  <div class="chart">
-    <RegionChart trips={aggTrips} bind:filter />
+  <div class="charts">
+    <div class="chart">
+      <RegionChart trips={aggTrips} bind:filter />
+    </div>
+    <!-- <div class="chart">
+      <RegionChart trips={aggTrips} bind:filter />
+    </div> -->
   </div>
   <div class="reset">
-    <button onclick={() => (filter = '')}>Reset</button>
+    <button class="btn" onclick={() => (filter = '')}>Reset</button>
   </div>
 </div>
 
@@ -51,29 +56,29 @@
 </div>
 
 <style>
-  .viz {
-    /* margin: 2rem; */
-  }
-  .tags {
+  .charts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 8rem);
-    row-gap: 3rem;
-    column-gap: 5rem;
+    grid-template-columns: repeat(auto-fit, 25rem);
     justify-content: center;
+    align-items: center;
   }
 
   .chart {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 75vw;
-    padding: 50px;
-    gap: 100px;
   }
 
   .reset {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .tags {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 8rem);
+    row-gap: 3rem;
+    column-gap: 5rem;
+    align-items: center;
   }
 </style>
