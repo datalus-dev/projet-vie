@@ -16,9 +16,14 @@
   <title>{siteTitle}</title>
 </svelte:head>
 
-<p><em>pre-pre-pre-pre-alpha</em></p>
-<h1>Vie: <em>it's your life</em></h1>
-<p>discovery and recommendations, curated by friends</p>
+<div id="header">
+  <p><em>pre-pre-pre-pre-alpha</em></p>
+  <h1>C'est La Vie</h1>
+  <h2><em>it's your life</em></h2>
+</div>
+<div id="descriptor">
+  <p>discovery and recommendations, curated by friends</p>
+</div>
 
 <div id="assets">
   <button class="sample" onclick={() => (location.href = '/u/teon/stubs')}>
@@ -34,6 +39,10 @@
 </div>
 
 <style>
+  #header {
+    padding: 4rem 0;
+  }
+
   #assets {
     width: 75vw;
     padding: 2rem;

@@ -88,11 +88,21 @@
   {/if}
 </h2>
 <form id="usernameInfo" onsubmit={handleSubmitUsername}>
-  <label>
-    <input type="text" name="username" bind:value={usernameSubmit} />
-  </label>
+  <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
+    <legend class="fieldset-legend">Username</legend>
+    <label>
+      <input
+        type="text"
+        name="username"
+        class="input"
+        placeholder="your_username"
+        bind:value={usernameSubmit}
+      />
+    </label>
+    <p class="fieldset-label">Your username must be unique.</p>
+    <button type="submit" form="usernameInfo" class="btn" value="Submit">Submit</button>
+  </fieldset>
 </form>
-<button type="submit" form="usernameInfo" value="Submit">Submit</button>
 
 <h2>My Circles</h2>
 <ul>
@@ -108,17 +118,26 @@
 
 <h2>Sharing Options</h2>
 <form id="sharerInfo" onsubmit={handleSubmitCircle}>
-  <label>
-    <input type="text" name="sharer_email" bind:value={sharer_email} />
-  </label>
-  {#each levels as level}
+  <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
+    <legend class="fieldset-legend">Send To</legend>
     <label>
-      <input type="checkbox" name="circles" value={level} bind:group={circles} />
-      {level}
+      <input
+        type="text"
+        name="sharer_email"
+        class="input"
+        placeholder="your_friend@mail.com"
+        bind:value={sharer_email}
+      />
     </label>
-  {/each}
+    {#each levels as level}
+      <label>
+        <input type="checkbox" name="circles" class="checkbox" value={level} bind:group={circles} />
+        {level}
+      </label>
+    {/each}
+    <button type="submit" form="sharerInfo" class="btn" value="Submit">Submit</button>
+  </fieldset>
 </form>
-<button type="submit" form="sharerInfo" value="Submit">Submit</button>
 
 <style>
   span {

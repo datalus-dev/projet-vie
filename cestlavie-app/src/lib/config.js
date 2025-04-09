@@ -18,16 +18,16 @@ export const navItems = [
     route: '/'
   },
   {
-    title: 'Users',
-    route: '/users'
-  },
-  {
     title: 'Stubs',
     route: '/u/teon/stubs'
   },
   {
     title: 'Tags',
     route: '/u/teon/tags'
+  },
+  {
+    title: 'Users',
+    route: '/users'
   }
   // }, {
   // 	title: 'Maps',
