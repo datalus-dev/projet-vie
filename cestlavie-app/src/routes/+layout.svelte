@@ -67,7 +67,7 @@
 	<div class="drawer lg:drawer-open">
 		<input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 		<div class="drawer-side">
-		  <!-- <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> -->
+		  <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
 		  <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
 			<!-- Sidebar content here -->
       {#each navItems as navItem}
@@ -76,27 +76,28 @@
 		  </ul>
 		</div>
   </div>
-  <div class="body">
-    <div class="login">
-      <div class="buttons">
-        <button id="login" onclick={() => location.href='/login'}>{user?.email || 'Login'}</button>
-        {#if user?.email}
-          <button id="logout" onclick={logout}>Logout</button>
-        {/if}
+  <div class="drawer-content flex flex-col items-center justify-center">
+    <!-- Page content here -->
+    <div class="body">
+      <div class="login">
+        <div class="buttons">
+          <button id="login" onclick={() => location.href='/login'}>{user?.email || 'Login'}</button>
+          {#if user?.email}
+            <button id="logout" onclick={logout}>Logout</button>
+          {/if}
+        </div>
       </div>
-    </div>
-    <div class="main-content">
-      {@render children()}
+      <div class="main-content">
+        {@render children()}
+      </div>
     </div>
   </div>
   <div class="dock dock-md lg:hidden">
-    <!-- <div class=""> -->
     {#each navItems as navItem}
       <button onclick={() => location.href=navItem.route}>
         <span class="dock-label">{navItem.title}</span>
       </button>
     {/each}
-    <!-- </div> -->
   </div>
 
 </div>
