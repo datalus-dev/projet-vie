@@ -8,14 +8,16 @@
 
   const { data, width, height, xGet, config } = getContext('LayerCake');
 
-  let { fill = '#f0c',
-        stroke = '#f0c', 
-        strokeWidth = 2,
-        r = 4.5,
-        fillOpacity = 0.5,
-        circleFill = '#f0c',
-        circleStroke = '#fff',
-        circleStrokeWidth = 1 } = $props();
+  let {
+    fill = '#f0c',
+    stroke = '#f0c',
+    strokeWidth = 2,
+    r = 4.5,
+    fillOpacity = 0.5,
+    circleFill = '#f0c',
+    circleStroke = '#fff',
+    circleStrokeWidth = 1
+  } = $props();
 
   let angleSlice = $state((Math.PI * 2) / $config.x.length);
 

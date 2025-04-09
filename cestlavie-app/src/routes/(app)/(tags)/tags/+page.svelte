@@ -1,3 +1,1 @@
-Check out our tags:
-
-WIP.
+Check out our tags: WIP.

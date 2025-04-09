@@ -1,11 +1,11 @@
 <script>
-    let { data } = $props();
+  let { data } = $props();
 </script>
 
 Checkout our users:
 
 <ul>
-    {#each data.usernames as row}
+  {#each data.usernames as row}
     <li><a href="./u/{row.username}">{row.username}</a></li>
-    {/each}
+  {/each}
 </ul>

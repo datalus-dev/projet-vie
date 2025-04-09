@@ -1,3 +1,1 @@
-Check out our stubs:
-
-WIP.
+Check out our stubs: WIP.

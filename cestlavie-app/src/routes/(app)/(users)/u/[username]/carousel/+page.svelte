@@ -1,17 +1,16 @@
 <script>
-	import Carousel from "$lib/components/Carousel.svelte";
-	
-	let { data } = $props();
+  import Carousel from '$lib/components/Carousel.svelte';
 
-	// consider using the route as the property name for the collection
-	const images = data.pages;
+  let { data } = $props();
 
+  // consider using the route as the property name for the collection
+  const images = data.pages;
 </script>
 
 <svelte:head>
-	<title>Carousel</title>
+  <title>Carousel</title>
 </svelte:head>
 
-<h1>Scrapbook</h1>   
+<h1>Scrapbook</h1>
 
 <Carousel {images} />

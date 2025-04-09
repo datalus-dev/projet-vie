@@ -1,6 +1,5 @@
 export const load = async ({ params }) => {
+  let { username } = params;
 
-    let { username } = params;
-
-    return { username }
-}
+  return { username };
+};

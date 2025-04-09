@@ -1,20 +1,19 @@
 <script>
-	import Gallery from "$lib/components/Gallery.svelte";
-	
-	let { data } = $props();
+  import Gallery from '$lib/components/Gallery.svelte';
 
-	// consider using the route as the property name for the collection
-	const items = data.collection.stubs;
-	const path = data.path;
+  let { data } = $props();
 
+  // consider using the route as the property name for the collection
+  const items = data.collection.stubs;
+  const path = data.path;
 </script>
 
 <svelte:head>
-	<title>Ticket Stubs Gallery</title>
+  <title>Ticket Stubs Gallery</title>
 </svelte:head>
 
 <h1>Ticket Stubs</h1>
 
 <div>
-	<Gallery {path} {items} />
+  <Gallery {path} {items} />
 </div>

@@ -14,11 +14,8 @@
   }
 </script>
 
-<svelte:window onkeydown={handleKeyDown}/>
-<Carousel
-        bind:this={carousel}
-        let:loaded
->
+<svelte:window onkeydown={handleKeyDown} />
+<Carousel bind:this={carousel} let:loaded>
   {#each images as src, imageIndex (src)}
     <div class="img-container">
       {#if loaded.includes(imageIndex)}

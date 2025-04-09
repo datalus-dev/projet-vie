@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
 export const load = async () => {
-	redirect(301, `/calendars`);
-}
+  redirect(301, `/calendars`);
+};

@@ -1,3 +1,1 @@
-Check out our map view.
-
-WIP.
+Check out our map view. WIP.

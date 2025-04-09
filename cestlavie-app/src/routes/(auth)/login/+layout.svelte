@@ -1,5 +1,5 @@
 <script>
-    let { children } = $props()
+  let { children } = $props();
 </script>
 
 <div class="body">
@@ -14,7 +14,7 @@
 
 <style>
   .body {
-  display: grid;
-  place-items: center;
+    display: grid;
+    place-items: center;
   }
 </style>

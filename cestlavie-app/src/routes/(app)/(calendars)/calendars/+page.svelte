@@ -1,3 +1,1 @@
-Check out our calendar view.
-
-WIP.
+Check out our calendar view. WIP.

@@ -8,7 +8,7 @@
   const { width, height, xScale, extents, config } = getContext('LayerCake');
 
   // /** @type {Number} [lineLengthFactor=1.1] - How far to extend the lines from the circle's center. A value of `1` puts them at the circle's circumference. */
-  let { lineLengthFactor = 1.1, labelPlacementFactor = 1.25, filter=$bindable() } = $props();
+  let { lineLengthFactor = 1.1, labelPlacementFactor = 1.25, filter = $bindable() } = $props();
 
   let max = $derived($xScale(Math.max(...$extents.x)));
 
@@ -18,9 +18,8 @@
   let angleSlice = $state((Math.PI * 2) / $config.x.length);
 
   function click(evt) {
-
     filter = evt.target.firstChild.data;
-    console.log(filter)
+    console.log(filter);
   }
 
   /** @param {Number} total
@@ -53,17 +52,17 @@
     >
     </line>
     <!-- <rect width="0.5em" height="1em"> -->
-      <!-- TODO: fix a11y -->
+    <!-- TODO: fix a11y -->
     <text
       onclick={click}
       text-anchor={anchor($config.x.length, i)}
       dy="0.35em"
       font-size="12px"
       transform="translate({labelPlacement * Math.cos(thisAngleSlice)}, {labelPlacement *
-        Math.sin(thisAngleSlice)})" role="button">{label}</text
+        Math.sin(thisAngleSlice)})"
+      role="button">{label}</text
     >
     <!-- </rect> -->
-
   {/each}
 </g>
 

@@ -6,7 +6,10 @@
   <div class="modal" class:modal-open={isModalOpen}>
     <div class="modal-box w-lg">
       <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick={()=>isModalOpen = false}>✕</button>
+        <button
+          class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          onclick={() => (isModalOpen = false)}>✕</button
+        >
       </form>
       <div class="dialog">
         {@render children()}
@@ -21,7 +24,7 @@
   }
 
   form {
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
   .modal {
