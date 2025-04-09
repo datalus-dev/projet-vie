@@ -55,13 +55,11 @@
     /* margin: 2rem; */
   }
   .tags {
-    width: 75vw;
     display: grid;
     grid-template-columns: repeat(auto-fit, 8rem);
     row-gap: 3rem;
     column-gap: 5rem;
     justify-content: center;
-    /* padding: 2rem; */
   }
 
   .chart {

@@ -9,20 +9,37 @@
   let xmax = Math.max(...Object.values(trips[0]));
 </script>
 
-<div class="chart-container">
-  <LayerCake
-    padding={{ top: 30, right: 30, bottom: 30, left: 30 }}
-    x={xKey}
-    xDomain={[0, xmax]}
-    xRange={({ height }) => [0, height / 2]}
-    data={trips}
-  >
-    <Svg>
-      <AxisRadial bind:filter />
-      <Radar />
-    </Svg>
-  </LayerCake>
+<div class="charts">
+  <div class="chart-container">
+    <LayerCake
+      padding={{ top: 30, right: 30, bottom: 30, left: 30 }}
+      x={xKey}
+      xDomain={[0, xmax]}
+      xRange={({ height }) => [0, height / 2]}
+      data={trips}
+    >
+      <Svg>
+        <AxisRadial bind:filter />
+        <Radar />
+      </Svg>
+    </LayerCake>
+  </div>
+  <!-- <div class="chart-container">
+    <LayerCake
+      padding={{ top: 30, right: 30, bottom: 30, left: 30 }}
+      x={xKey}
+      xDomain={[0, xmax]}
+      xRange={({ height }) => [0, height / 2]}
+      data={trips}
+    >
+      <Svg>
+        <AxisRadial bind:filter />
+        <Radar />
+      </Svg>
+    </LayerCake>
+  </div> -->
 </div>
+
 
 <style>
   /*
@@ -31,9 +48,13 @@
       The point being it needs dimensions since the <LayerCake> element will
       expand to fill it.
     */
+  .charts {
+    display: grid;
+  }
+
   .chart-container {
-    width: 100%;
+    max-width: 100vw;
     height: 300px;
-    /* padding: 30px; */
+    padding: 3rem;
   }
 </style>
