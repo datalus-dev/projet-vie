@@ -10,9 +10,9 @@
     faviconImage,
     siteImageWidth
   } from '$lib/config.js';
-  import { isMenuOpen } from '$lib/assets/js/store';
+  import { page } from '$app/state';
   import { navItems } from '$lib/config';
-  import { preloadCode, invalidate } from '$app/navigation';
+  import { preloadCode, invalidate, goto } from '$app/navigation';
   import { onMount } from 'svelte';
 
   let { data, children } = $props();
@@ -67,62 +67,83 @@
   <meta property="og:image:height" content={siteImageWidth} />
 </svelte:head>
 
-<div class="layout" class:open={isMenuOpen}>
-  <div class="drawer lg:drawer-open">
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-side">
-      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-      <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-        <!-- Sidebar content here -->
-        {#each navItems as navItem}
-          <li><a href={navItem.route}>{navItem.title}</a></li>
-        {/each}
-      </ul>
-    </div>
-  </div>
-  <div class="drawer-content flex flex-col items-center justify-center">
+
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
     <!-- Page content here -->
     <div class="body">
       <div class="login">
-        <div class="buttons">
-          <button id="login" onclick={() => (location.href = '/login')}
-            >{user?.email || 'Login'}</button
-          >
-          {#if user?.email}
-            <button id="logout" onclick={logout}>Logout</button>
-          {/if}
-        </div>
+        <button id="login" onclick={() => (location.href = '/login')}
+          >{user?.email || 'Login'}</button
+        >
+        {#if user?.email}
+          <button id="logout" onclick={logout}>Logout</button>
+        {/if}
       </div>
       <div class="main-content">
         {@render children()}
       </div>
     </div>
-  </div>
-  <div class="dock dock-md lg:hidden">
-    {#each navItems as navItem}
-      <button onclick={() => (location.href = navItem.route)}>
-        <span class="dock-label">{navItem.title}</span>
+    <div class="dock dock-md bg-base-200 lg:hidden">
+      {#if page.url.pathname === '/'}
+        <button class='dock-active' onclick={() => goto("/")}>
+          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><polyline points="1 11 12 2 23 11" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"></polyline><path d="m5,13v7c0,1.105.895,2,2,2h10c1.105,0,2-.895,2-2v-7" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path><line x1="12" y1="22" x2="12" y2="18" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></line></g></svg>
+        <span class="dock-label">Home</span>
       </button>
-    {/each}
+      {:else}
+        <button onclick={() => goto("/")}>
+          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><polyline points="1 11 12 2 23 11" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"></polyline><path d="m5,13v7c0,1.105.895,2,2,2h10c1.105,0,2-.895,2-2v-7" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path><line x1="12" y1="22" x2="12" y2="18" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></line></g></svg>
+          <span class="dock-label">Home</span>
+        </button>
+      {/if}
+      
+      {#if page.url.pathname === '/users'}
+        <button class='dock-active' onclick={() => (goto("/users"))}>
+          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><polyline points="3 14 9 14 9 17 15 17 15 14 21 14" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"></polyline><rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></rect></g></svg>
+          <span class="dock-label">Users</span>
+        </button>
+      {:else}
+        <button onclick={() => (goto("/users"))}>
+          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><polyline points="3 14 9 14 9 17 15 17 15 14 21 14" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"></polyline><rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></rect></g></svg>
+          <span class="dock-label">Users</span>
+        </button>
+      {/if}
+
+      {#if page.url.pathname == '/private'}
+        <button class='dock-active' onclick={() => (goto("/private"))}>
+          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></circle><path d="m22,13.25v-2.5l-2.318-.966c-.167-.581-.395-1.135-.682-1.654l.954-2.318-1.768-1.768-2.318.954c-.518-.287-1.073-.515-1.654-.682l-.966-2.318h-2.5l-.966,2.318c-.581.167-1.135.395-1.654.682l-2.318-.954-1.768,1.768.954,2.318c-.287.518-.515,1.073-.682,1.654l-2.318.966v2.5l2.318.966c.167.581.395,1.135.682,1.654l-.954,2.318,1.768,1.768,2.318-.954c.518.287,1.073.515,1.654.682l.966,2.318h2.5l.966-2.318c.581-.167,1.135-.395,1.654-.682l2.318.954,1.768-1.768-.954-2.318c.287-.518.515-1.073.682-1.654l2.318-.966Z" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path></g></svg>
+          <span class="dock-label">Settings</span>
+        </button>
+      {:else}
+        <button onclick={() => (goto("/private"))}>
+          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></circle><path d="m22,13.25v-2.5l-2.318-.966c-.167-.581-.395-1.135-.682-1.654l.954-2.318-1.768-1.768-2.318.954c-.518-.287-1.073-.515-1.654-.682l-.966-2.318h-2.5l-.966,2.318c-.581.167-1.135.395-1.654.682l-2.318-.954-1.768,1.768.954,2.318c-.287.518-.515,1.073-.682,1.654l-2.318.966v2.5l2.318.966c.167.581.395,1.135.682,1.654l-.954,2.318,1.768,1.768,2.318-.954c.518.287,1.073.515,1.654.682l.966,2.318h2.5l.966-2.318c.581-.167,1.135-.395,1.654-.682l2.318.954,1.768-1.768-.954-2.318c.287-.518.515-1.073.682-1.654l2.318-.966Z" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path></g></svg>
+          <span class="dock-label">Settings</span>
+        </button>
+      {/if}
+    </div>
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+      <!-- Sidebar content here -->
+      {#each navItems as navItem}
+        <li><a href={navItem.route}>{navItem.title}</a></li>
+      {/each}
+    </ul>
   </div>
 </div>
+
 
 <style>
   .login {
     display: grid;
     justify-content: center;
     align-items: center;
-  }
-
-  .buttons {
-    width: auto;
-    display: grid;
     padding: 0.5rem;
-    /* border: solid;
-	border-color: blue; */
   }
 
-  button {
+  .login button {
     border: thin dashed;
     border-color: black;
     border-radius: 8px;
@@ -130,13 +151,8 @@
   }
 
   .main-content {
-    /* padding: 2rem; */
-    width: 75vw;
+    padding: 2rem;
+    /* width: 75vw; */
   }
 
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: flex-start;
-  }
 </style>
