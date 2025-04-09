@@ -4,7 +4,7 @@
 
 <dialog class="modal">
   <div class="modal" class:modal-open={isModalOpen}>
-    <div class="modal-box w-lg">
+    <div class="modal-box">
       <form method="dialog">
         <button
           class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
