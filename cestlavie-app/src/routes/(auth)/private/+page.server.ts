@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ depends, locals: { supabase } }) =>
     .from('acl')
     .select('sharer_email, circles')
     .order('sharer_email');
-  const { data: username } = await supabase.from('usernames').select('username');
+  const { data: usernames } = await supabase.from('usernames').select('username');
 
-  return { notes: notes ?? [], acls: acls ?? [], username: username ?? [] };
+  return { notes: notes ?? [], acls: acls ?? [], usernames: usernames ?? [] };
 };

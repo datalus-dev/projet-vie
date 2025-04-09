@@ -72,10 +72,21 @@
   <div class="drawer-content">
     <!-- Page content here -->
     <div class="body">
-      <div class="login">
-        <button id="login" onclick={() => (location.href = '/login')}
-          >{user?.email || 'Login'}</button
+      {#if user?.email}
+        <button
+          class="btn btn-circle btn-sm create"
+          aria-label="Add new travel"
+          onclick={() => goto('/new')}
         >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+            ><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
+              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+            /></svg
+          >
+        </button>
+      {/if}
+      <div class="login">
+        <button id="login" onclick={() => goto('/login')}>{user?.email || 'Login'}</button>
         {#if user?.email}
           <button id="logout" onclick={logout}>Logout</button>
         {/if}
@@ -288,6 +299,15 @@
 
   .main-content {
     padding: 2rem;
+    min-height: 100vh;
     /* width: 75vw; */
+  }
+
+  .create {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 87vh;
+    left: 90vw;
+    z-index: 9999;
   }
 </style>

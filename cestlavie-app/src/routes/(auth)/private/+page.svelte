@@ -2,31 +2,17 @@
   import { invalidate } from '$app/navigation';
   import type { EventHandler } from 'svelte/elements';
 
-  import type { PageData } from './$types';
-
   let { data } = $props();
-  let { notes, acls, supabase, user, username } = $derived(data);
+  let { acls, supabase, user, usernames } = $derived(data);
+  let username = $state('');
+  if (usernames.length > 0) {
+    username = usernames[0].username;
+  }
 
   let circles = $state([]);
   let sharer_email = $state('');
   let usernameSubmit = $state('');
   let levels = ['friends', 'close friends'];
-
-  const handleSubmit: EventHandler<SubmitEvent, HTMLFormElement> = async (evt) => {
-    evt.preventDefault();
-    if (!evt.target) return;
-
-    const form = evt.target as HTMLFormElement;
-
-    const note = (new FormData(form).get('note') ?? '') as string;
-    if (!note) return;
-
-    const { error } = await supabase.from('notes').insert({ note });
-    if (error) console.error(error);
-
-    invalidate('supabase:db:notes');
-    form.reset();
-  };
 
   const handleSubmitCircle: EventHandler<SubmitEvent, HTMLFormElement> = async (evt) => {
     evt.preventDefault();
@@ -66,23 +52,10 @@
 
 <h1>Private page for user: {user?.email}</h1>
 
-<!-- <h2>Notes</h2>
-<ul>
-	{#each notes as note}
-		<li>{note.note}</li>
-	{/each}
-</ul>
-<form onsubmit={handleSubmit}>
-	<label>
-		Add a note
-		<input name="note" type="text" />
-	</label>
-</form> -->
-
 <h2>
   Your Username:
   {#if username.length > 0}
-    <a href="/u/{username[0].username}">{username[0].username}</a>
+    <a href="/u/{username}">{username}</a>
   {:else}
     Username not yet set.
   {/if}
@@ -95,11 +68,17 @@
         type="text"
         name="username"
         class="input"
-        placeholder="your_username"
+        placeholder={username || 'your_username'}
         bind:value={usernameSubmit}
       />
     </label>
-    <p class="fieldset-label">Your username must be unique.</p>
+    {#if username.length > 0}
+      <p class="fieldset-label">
+        Your current username is "{username}". Hitting "Submit" change your username.
+      </p>
+    {:else}
+      <p class="fieldset-label">Your username must be unique.</p>
+    {/if}
     <button type="submit" form="usernameInfo" class="btn" value="Submit">Submit</button>
   </fieldset>
 </form>
