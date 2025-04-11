@@ -14,6 +14,7 @@
   let endDate = $state('');
   let origin = $state('');
   let destination = $state('');
+  let desRegion = $state('');
   let description = $state('');
 
   const handleSubmitTravel: EventHandler<SubmitEvent, HTMLFormElement> = async (evt) => {
@@ -37,6 +38,9 @@
     const destination = (new FormData(form).get('destination') ?? '') as string;
     if (!destination) return;
 
+    const desRegion = (new FormData(form).get('desRegion') ?? '') as string;
+    if (!desRegion) return;
+
     const description = (new FormData(form).get('description') ?? '') as string;
     if (!description) return;
 
@@ -46,6 +50,7 @@
       endDate,
       origin,
       destination,
+      desRegion,
       description
     };
 
@@ -108,6 +113,15 @@
     <label>
       <input
         type="text"
+        name="desRegion"
+        class="input"
+        placeholder="Europe"
+        bind:value={desRegion}
+      />
+    </label>
+    <label>
+      <input
+        type="text"
         name="description"
         class="input"
         placeholder="Best New Years, ever! 🥳"
@@ -120,14 +134,6 @@
 </form>
 
 <style>
-  span {
-    color: blue;
-    border: dotted;
-    border-width: 1px;
-    padding: 1px;
-    margin: 5px;
-  }
-
   label {
     margin: 1rem;
   }
@@ -141,4 +147,5 @@
     border: solid;
     border-width: 1px;
   }
+
 </style>

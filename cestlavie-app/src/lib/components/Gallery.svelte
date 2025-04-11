@@ -8,7 +8,7 @@
   <div id="wrapper">
     {#each items as item}
       <div class="cell">
-        <StubWithPin {path} {item} width={'100px'} height={''} />
+        <StubWithPin {path} {item} width={'100px'} height={'100px'} />
       </div>
     {/each}
   </div>

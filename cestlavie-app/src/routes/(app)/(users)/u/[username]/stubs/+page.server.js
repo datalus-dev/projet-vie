@@ -8,9 +8,10 @@ export const load = async ({ url, fetch, locals: { supabase } }) => {
   // remove /static from the filepath
   pages = pages.map((page) => page.slice(8));
 
-  const path = '/images/thumbnails/stubs';
-
   const { data: contents } = await supabase.from('content').select('content, contentType');
+
+  const { data: root } = supabase.storage.from('supabase-cestlavie-storage').getPublicUrl('images/thumbnails/stubs')
+  const path = root.publicUrl;
 
   return { collection, path, pages, contents };
 };

@@ -115,7 +115,7 @@
 
   article {
     width: 8rem;
-    height: 30rem;
+    height: 22rem;
     /* margin: 1rem auto; */
     /* display: flex; */
     /* display: block; */
