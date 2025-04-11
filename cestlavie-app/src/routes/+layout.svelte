@@ -14,9 +14,21 @@
   import { navItems } from '$lib/config';
   import { preloadCode, invalidate, goto } from '$app/navigation';
   import { onMount } from 'svelte';
+  import HomeSVG from '$lib/components/svg/HomeSVG.svelte';
+  import NewSVG from '$lib/components/svg/NewSVG.svelte';
+  import StubSVG from '$lib/components/svg/StubSVG.svelte';
+  import TagSVG from '$lib/components/svg/TagSVG.svelte';
+  import ScrapbookSVG from '$lib/components/svg/ScrapbookSVG.svelte';
+  import SettingsSVG from '$lib/components/svg/SettingsSVG.svelte';
 
   let { data, children } = $props();
   let { session, supabase, user } = $derived(data);
+  // Figure out how to load username to the layout.server.ts
+  let username = $state('teon');
+  
+  // if (usernames.length > 0) {
+  //   username = usernames[0].username;
+  // }
 
   /**
    * This pre-fetches all top-level routes on the site in the background for faster loading.
@@ -72,25 +84,21 @@
   <div class="drawer-content">
     <!-- Page content here -->
     <div class="body">
+      <div class="login">
+        <button class="btn btn-xs" id="login" onclick={() => goto('/login')}>{user?.email || 'Login'}</button>
+        {#if user?.email}
+          <button class="btn btn-xs" id="logout" onclick={logout}>Logout</button>
+        {/if}
+      </div>
       {#if user?.email}
         <button
           class="btn btn-circle btn-sm create"
           aria-label="Add new travel"
           onclick={() => goto('/new')}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-            ><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
-              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
-            /></svg
-          >
+          <NewSVG />
         </button>
       {/if}
-      <div class="login">
-        <button id="login" onclick={() => goto('/login')}>{user?.email || 'Login'}</button>
-        {#if user?.email}
-          <button id="logout" onclick={logout}>Logout</button>
-        {/if}
-      </div>
       <div class="main-content">
         {@render children()}
       </div>
@@ -98,174 +106,65 @@
     <div class="dock dock-md bg-base-200 lg:hidden">
       {#if page.url.pathname === '/'}
         <button class="dock-active" onclick={() => goto('/')}>
-          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-            ><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-              ><polyline
-                points="1 11 12 2 23 11"
-                fill="none"
-                stroke="currentColor"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></polyline><path
-                d="m5,13v7c0,1.105.895,2,2,2h10c1.105,0,2-.895,2-2v-7"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></path><line
-                x1="12"
-                y1="22"
-                x2="12"
-                y2="18"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></line></g
-            ></svg
-          >
+          <HomeSVG />
           <span class="dock-label">Home</span>
         </button>
       {:else}
         <button onclick={() => goto('/')}>
-          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-            ><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-              ><polyline
-                points="1 11 12 2 23 11"
-                fill="none"
-                stroke="currentColor"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></polyline><path
-                d="m5,13v7c0,1.105.895,2,2,2h10c1.105,0,2-.895,2-2v-7"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></path><line
-                x1="12"
-                y1="22"
-                x2="12"
-                y2="18"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></line></g
-            ></svg
-          >
+          <HomeSVG />
           <span class="dock-label">Home</span>
         </button>
       {/if}
 
-      {#if page.url.pathname === '/users'}
-        <button class="dock-active" onclick={() => goto('/users')}>
-          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-            ><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-              ><polyline
-                points="3 14 9 14 9 17 15 17 15 14 21 14"
-                fill="none"
-                stroke="currentColor"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></polyline><rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="2"
-                ry="2"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></rect></g
-            ></svg
-          >
-          <span class="dock-label">Users</span>
+      {#if user?.email}
+        {#if page.url.pathname === `/u/${username}/stubs`}
+          <button class="dock-active" onclick={() => goto(`/u/${username}/stubs`)}>
+            <!-- #TODO: consider making a snippet to pass in content here -->
+            <StubSVG />
+            <span class="dock-label">Stubs</span>
+          </button>
+        {:else}
+          <button onclick={() => goto(`/u/${username}/stubs`)}>
+            <StubSVG />
+            <span class="dock-label">Stubs</span>
+          </button>
+        {/if}
+
+        {#if page.url.pathname === `/u/${username}/tags`}
+          <button class="dock-active" onclick={() => goto(`/u/${username}/tags`)}>
+            <!-- #TODO: consider making a snippet to pass in content here -->
+            <TagSVG />
+            <span class="dock-label">Tags</span>
+          </button>
+        {:else}
+          <button onclick={() => goto(`/u/${username}/tags`)}>
+            <TagSVG />
+            <span class="dock-label">Tags</span>
+          </button>
+        {/if}
+
+        {#if page.url.pathname === `/u/${username}/carousel`}
+        <button class="dock-active" onclick={() => goto(`/u/${username}/carousel`)}>
+          <!-- #TODO: consider making a snippet to pass in content here -->
+          <ScrapbookSVG />
+          <span class="dock-label">Tags</span>
         </button>
       {:else}
-        <button onclick={() => goto('/users')}>
-          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-            ><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-              ><polyline
-                points="3 14 9 14 9 17 15 17 15 14 21 14"
-                fill="none"
-                stroke="currentColor"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></polyline><rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="2"
-                ry="2"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></rect></g
-            ></svg
-          >
-          <span class="dock-label">Users</span>
+        <button onclick={() => goto(`/u/${username}/carousel`)}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16" id="Tag--Streamline-Atlas" height="16" width="16"><desc>Tag Streamline Icon: https://streamlinehq.com</desc><defs></defs><g id="price_tag"><path d="M2.13125 0.9375 0.9375 2.13125l0 4.76875L8.100000000000001 14.0625l5.9624999999999995 -5.9624999999999995L6.8999999999999995 0.9375l-4.76875 0z" stroke-miterlimit="10" fill="none" stroke="#000000" stroke-width="1"></path><path d="M2.725 3.9187499999999997a1.1937499999999999 1.1937499999999999 0 1 0 2.3874999999999997 0 1.1937499999999999 1.1937499999999999 0 1 0 -2.3874999999999997 0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" stroke-width="1"></path></g></svg>
+          <span class="dock-label">Scrapbook</span>
         </button>
       {/if}
+    {/if}
 
       {#if page.url.pathname == '/private'}
         <button class="dock-active" onclick={() => goto('/private')}>
-          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-            ><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-              ><circle
-                cx="12"
-                cy="12"
-                r="3"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></circle><path
-                d="m22,13.25v-2.5l-2.318-.966c-.167-.581-.395-1.135-.682-1.654l.954-2.318-1.768-1.768-2.318.954c-.518-.287-1.073-.515-1.654-.682l-.966-2.318h-2.5l-.966,2.318c-.581.167-1.135.395-1.654.682l-2.318-.954-1.768,1.768.954,2.318c-.287.518-.515,1.073-.682,1.654l-2.318.966v2.5l2.318.966c.167.581.395,1.135.682,1.654l-.954,2.318,1.768,1.768,2.318-.954c.518.287,1.073.515,1.654.682l.966,2.318h2.5l.966-2.318c.581-.167,1.135-.395,1.654-.682l2.318.954,1.768-1.768-.954-2.318c.287-.518.515-1.073.682-1.654l2.318-.966Z"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></path></g
-            ></svg
-          >
+          <SettingsSVG />
           <span class="dock-label">Settings</span>
         </button>
       {:else}
         <button onclick={() => goto('/private')}>
-          <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-            ><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-              ><circle
-                cx="12"
-                cy="12"
-                r="3"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></circle><path
-                d="m22,13.25v-2.5l-2.318-.966c-.167-.581-.395-1.135-.682-1.654l.954-2.318-1.768-1.768-2.318.954c-.518-.287-1.073-.515-1.654-.682l-.966-2.318h-2.5l-.966,2.318c-.581.167-1.135.395-1.654.682l-2.318-.954-1.768,1.768.954,2.318c-.287.518-.515,1.073-.682,1.654l-2.318.966v2.5l2.318.966c.167.581.395,1.135.682,1.654l-.954,2.318,1.768,1.768,2.318-.954c.518.287,1.073.515,1.654.682l.966,2.318h2.5l.966-2.318c.581-.167,1.135-.395,1.654-.682l2.318.954,1.768-1.768-.954-2.318c.287-.518.515-1.073.682-1.654l2.318-.966Z"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></path></g
-            ></svg
-          >
+          <SettingsSVG />
           <span class="dock-label">Settings</span>
         </button>
       {/if}
@@ -273,13 +172,16 @@
   </div>
   <div class="drawer-side">
     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 text-base-content min-h-90/100 w-42 p-4">
+    <ul class="menu bg-base-200 text-base-content min-h-90/100 w-42 p-8">
       <!-- Sidebar content here -->
       {#each navItems as navItem}
-        <li><a href={navItem.route}>{navItem.title}</a></li>
+        {#if user?.email || navItem.public}
+          <li><a href={navItem.route}><navItem.svg />{navItem.title}</a></li>
+        {/if}
       {/each}
     </ul>
-    <footer class="footer"><p>a <a href="https://datalus.xyz"><em>datalus</em></a> endeavor.</p></footer>
+    <!-- #TODO: Fix the footer position -->
+    <footer class="footer bg-base-200"><p>a <a href="https://datalus.xyz"><em>datalus</em></a> endeavor.</p></footer>
   </div>
 </div>
 
@@ -292,16 +194,18 @@
   }
 
   .login button {
-    border: thin dashed;
+    /* border: thin dashed;
     border-color: black;
-    border-radius: 8px;
+    border-radius: 8px; */
     margin: 0.25rem;
   }
 
+  .body {
+    min-height: 100dvh;
+  }
+
   .main-content {
-    padding: 2rem;
-    min-height: 100vh;
-    /* width: 75vw; */
+    padding: 2rem 2rem 5rem 2rem;
   }
 
   .create {
@@ -310,6 +214,10 @@
     top: 87dvh;
     left: 90dvw;
     z-index: 9999;
+  }
+
+  .drawer .ul {
+    padding: 4rem;
   }
 
 </style>
