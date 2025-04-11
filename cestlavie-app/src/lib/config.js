@@ -38,7 +38,7 @@ export const navItems = [
   },
   {
     title: 'Scrapbook',
-    route: '/carousel',
+    route: '/u/teon/carousel',
     svg: ScrapbookSVG,
     public: false
   },

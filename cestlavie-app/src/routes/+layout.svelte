@@ -116,7 +116,7 @@
         </button>
       {/if}
 
-      {#if user?.email}
+      <!-- {#if user?.email} -->
         {#if page.url.pathname === `/u/${username}/stubs`}
           <button class="dock-active" onclick={() => goto(`/u/${username}/stubs`)}>
             <!-- #TODO: consider making a snippet to pass in content here -->
@@ -155,7 +155,7 @@
           <span class="dock-label">Scrapbook</span>
         </button>
       {/if}
-    {/if}
+    <!-- {/if} -->
 
       {#if page.url.pathname == '/private'}
         <button class="dock-active" onclick={() => goto('/private')}>
@@ -175,9 +175,9 @@
     <ul class="menu bg-base-200 text-base-content min-h-90/100 w-42 p-8">
       <!-- Sidebar content here -->
       {#each navItems as navItem}
-        {#if user?.email || navItem.public}
+        <!-- {#if user?.email || navItem.public} -->
           <li><a href={navItem.route}><navItem.svg />{navItem.title}</a></li>
-        {/if}
+        <!-- {/if} -->
       {/each}
     </ul>
     <!-- #TODO: Fix the footer position -->
@@ -214,10 +214,6 @@
     top: 87dvh;
     left: 90dvw;
     z-index: 9999;
-  }
-
-  .drawer .ul {
-    padding: 4rem;
   }
 
 </style>
