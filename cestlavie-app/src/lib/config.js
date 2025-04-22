@@ -2,11 +2,14 @@
  * Common store for site attributes
  *
  **/
-import HomeSVG from '$lib/components/svg/HomeSVG.svelte';
-import StubSVG from '$lib/components/svg/StubSVG.svelte';
-import TagSVG from '$lib/components/svg/TagSVG.svelte';
-import SettingsSVG from '$lib/components/svg/SettingsSVG.svelte';
-import ScrapbookSVG from '$lib/components/svg/ScrapbookSVG.svelte';
+import HomeSvg from '$lib/components/svg/HomeSVG.svelte';
+import StubSvg from '$lib/components/svg/StubSVG.svelte';
+import TagSvg from '$lib/components/svg/TagSVG.svelte';
+import SettingsSvg from '$lib/components/svg/SettingsSVG.svelte';
+import ScrapbookSvg from '$lib/components/svg/ScrapbookSVG.svelte';
+import MapSvg from './components/svg/MapSVG.svelte';
+import CalendarSvg from './components/svg/CalendarSVG.svelte';
+import PassportSvg from './components/svg/PassportSVG.svelte';
 
 export const siteTitle = "C'est La Vie";
 export const siteDescription = 'Personal Archive of Events and Life';
@@ -21,40 +24,52 @@ export const navItems = [
   {
     title: 'Home',
     route: '/',
-    svg: HomeSVG,
+    svg: HomeSvg,
     public: true
   },
   {
     title: 'Stubs',
     route: '/u/teon/stubs',
-    svg: StubSVG,
+    svg: StubSvg,
     public: false
   },
   {
-    title: 'Tags',
-    route: '/u/teon/tags',
-    svg: TagSVG,
+    title: 'Passport',
+    route: '/u/teon/passport',
+    svg: PassportSvg,
     public: false
   },
   {
     title: 'Scrapbook',
-    route: '/u/teon/carousel',
-    svg: ScrapbookSVG,
+    route: '/u/teon/scrapbook',
+    svg: ScrapbookSvg,
     public: false
   },
+  // // when logged in, the public routes should collapsed under one menu
+  // {
+  //   title: 'Maps',
+  //   route: '/maps',
+  //   svg: MapSvg,
+  //   public: true,
+  // },
+  // {
+  //   title: 'Calendars',
+  //   route: '/calendars',
+  //   svg: CalendarSvg,
+  //   public: true
+  // },
+  // {
+  //   title: 'Passports',
+  //   route: '/passports',
+  //   svg: PassportSvg,
+  //   public: true
+  // },
   {
     title: 'Settings',
     route: '/private',
-    svg: SettingsSVG,
+    svg: SettingsSvg,
     public: true
   }
-  // }, {
-  // 	title: 'Maps',
-  // 	route: '/maps'
-  // }, {
-  // 	title: 'Calendars',
-  // 	route: '/calendars'
-  // }
 ];
 
 export const footer = [

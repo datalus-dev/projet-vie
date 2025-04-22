@@ -5,7 +5,7 @@
   let { data } = $props();
   let { acls, supabase, user, usernames } = $derived(data);
   let username = $state('');
-  
+
   if (usernames.length > 0) {
     username = usernames[0].username;
   }
@@ -63,28 +63,28 @@
         Username not yet set.
       {/if}
     </h2>
-  <form id="usernameInfo" onsubmit={handleSubmitUsername}>
-    <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
-      <legend class="fieldset-legend">Username</legend>
-      <label>
-        <input
-          type="text"
-          name="username"
-          class="input"
-          placeholder={username || 'your_username'}
-          bind:value={usernameSubmit}
-        />
-      </label>
-      {#if username.length > 0}
-        <p class="fieldset-label">
-          Your current username is "{username}". Hitting "Submit" change your username.
-        </p>
-      {:else}
-        <p class="fieldset-label">Your username must be unique.</p>
-      {/if}
-      <button type="submit" form="usernameInfo" class="btn" value="Submit">Submit</button>
-    </fieldset>
-  </form>
+    <form id="usernameInfo" onsubmit={handleSubmitUsername}>
+      <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
+        <legend class="fieldset-legend">Username</legend>
+        <label>
+          <input
+            type="text"
+            name="username"
+            class="input"
+            placeholder={username || 'your_username'}
+            bind:value={usernameSubmit}
+          />
+        </label>
+        {#if username.length > 0}
+          <p class="fieldset-label">
+            Your current username is "{username}". Hitting "Submit" change your username.
+          </p>
+        {:else}
+          <p class="fieldset-label">Your username must be unique.</p>
+        {/if}
+        <button type="submit" form="usernameInfo" class="btn" value="Submit">Submit</button>
+      </fieldset>
+    </form>
   </div>
 
   <div>
@@ -103,7 +103,13 @@
         </label>
         {#each levels as level}
           <label>
-            <input type="checkbox" name="circles" class="checkbox" value={level} bind:group={circles} />
+            <input
+              type="checkbox"
+              name="circles"
+              class="checkbox"
+              value={level}
+              bind:group={circles}
+            />
             {level}
           </label>
         {/each}

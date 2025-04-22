@@ -17,7 +17,7 @@
 </svelte:head>
 
 <div id="header">
-  <p><em>pre-pre-pre-pre-alpha</em></p>
+  <p><em>pre-pre-alpha</em></p>
   <h1>C'est La Vie</h1>
   <h2><em>it's your life</em></h2>
 </div>
@@ -27,10 +27,11 @@
 
 <div id="assets">
   <button class="sample" onclick={() => (location.href = '/u/teon/stubs')}>
-    <img
-      class="stub"
-      src="data/labelling/images/stubs/b6fc8982-scrapbook_26-stub_06.jpg"
-      alt="ticket stub of the Arc de Triomphe"
+    <StubWithPin
+      path={'data/labelling/images/stubs'}
+      item={{ filename: 'b6fc8982-scrapbook_26-stub_06.jpg' }}
+      ppwidth={'32px'}
+      ppheight={'32px'}
     />
   </button>
   <button onclick={() => window.open('/u/teon/tags', '_self')}>

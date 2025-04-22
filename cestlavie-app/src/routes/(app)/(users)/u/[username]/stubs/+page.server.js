@@ -10,7 +10,9 @@ export const load = async ({ url, fetch, locals: { supabase } }) => {
 
   const { data: contents } = await supabase.from('content').select('content, contentType');
 
-  const { data: root } = supabase.storage.from('supabase-cestlavie-storage').getPublicUrl('images/thumbnails/stubs')
+  const { data: root } = supabase.storage
+    .from('supabase-cestlavie-storage')
+    .getPublicUrl('images/thumbnails/stubs');
   const path = root.publicUrl;
 
   return { collection, path, pages, contents };

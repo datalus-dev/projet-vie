@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-  <title>Carousel</title>
+  <title>Scrapbook</title>
 </svelte:head>
 
 <h1>Scrapbook</h1>

@@ -25,7 +25,7 @@
   let { session, supabase, user } = $derived(data);
   // Figure out how to load username to the layout.server.ts
   let username = $state('teon');
-  
+
   // if (usernames.length > 0) {
   //   username = usernames[0].username;
   // }
@@ -85,7 +85,9 @@
     <!-- Page content here -->
     <div class="body">
       <div class="login">
-        <button class="btn btn-xs" id="login" onclick={() => goto('/login')}>{user?.email || 'Login'}</button>
+        <button class="btn btn-xs" id="login" onclick={() => goto('/login')}
+          >{user?.email || 'Login'}</button
+        >
         {#if user?.email}
           <button class="btn btn-xs" id="logout" onclick={logout}>Logout</button>
         {/if}
@@ -104,84 +106,37 @@
       </div>
     </div>
     <div class="dock dock-md bg-base-200 lg:hidden">
-      {#if page.url.pathname === '/'}
-        <button class="dock-active" onclick={() => goto('/')}>
-          <HomeSVG />
-          <span class="dock-label">Home</span>
-        </button>
-      {:else}
-        <button onclick={() => goto('/')}>
-          <HomeSVG />
-          <span class="dock-label">Home</span>
-        </button>
-      {/if}
-
+      <!-- #TODO: consider making a snippet to pass in content here -->
       <!-- {#if user?.email} -->
-        {#if page.url.pathname === `/u/${username}/stubs`}
-          <button class="dock-active" onclick={() => goto(`/u/${username}/stubs`)}>
-            <!-- #TODO: consider making a snippet to pass in content here -->
-            <StubSVG />
-            <span class="dock-label">Stubs</span>
+      {#each navItems as navItem}
+        {#if page.url.pathname === navItem.route}
+          <button class="dock-active" onclick={() => goto(navItem.route)}>
+            <navItem.svg />
+            <span class="dock-label">{navItem.title}</span>
           </button>
         {:else}
-          <button onclick={() => goto(`/u/${username}/stubs`)}>
-            <StubSVG />
-            <span class="dock-label">Stubs</span>
+          <button onclick={() => goto(navItem.route)}>
+            <navItem.svg />
+            <span class="dock-label">{navItem.title}</span>
           </button>
         {/if}
-
-        {#if page.url.pathname === `/u/${username}/tags`}
-          <button class="dock-active" onclick={() => goto(`/u/${username}/tags`)}>
-            <!-- #TODO: consider making a snippet to pass in content here -->
-            <TagSVG />
-            <span class="dock-label">Tags</span>
-          </button>
-        {:else}
-          <button onclick={() => goto(`/u/${username}/tags`)}>
-            <TagSVG />
-            <span class="dock-label">Tags</span>
-          </button>
-        {/if}
-
-        {#if page.url.pathname === `/u/${username}/carousel`}
-        <button class="dock-active" onclick={() => goto(`/u/${username}/carousel`)}>
-          <!-- #TODO: consider making a snippet to pass in content here -->
-          <ScrapbookSVG />
-          <span class="dock-label">Tags</span>
-        </button>
-      {:else}
-        <button onclick={() => goto(`/u/${username}/carousel`)}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16" id="Tag--Streamline-Atlas" height="16" width="16"><desc>Tag Streamline Icon: https://streamlinehq.com</desc><defs></defs><g id="price_tag"><path d="M2.13125 0.9375 0.9375 2.13125l0 4.76875L8.100000000000001 14.0625l5.9624999999999995 -5.9624999999999995L6.8999999999999995 0.9375l-4.76875 0z" stroke-miterlimit="10" fill="none" stroke="#000000" stroke-width="1"></path><path d="M2.725 3.9187499999999997a1.1937499999999999 1.1937499999999999 0 1 0 2.3874999999999997 0 1.1937499999999999 1.1937499999999999 0 1 0 -2.3874999999999997 0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" stroke-width="1"></path></g></svg>
-          <span class="dock-label">Scrapbook</span>
-        </button>
-      {/if}
-    <!-- {/if} -->
-
-      {#if page.url.pathname == '/private'}
-        <button class="dock-active" onclick={() => goto('/private')}>
-          <SettingsSVG />
-          <span class="dock-label">Settings</span>
-        </button>
-      {:else}
-        <button onclick={() => goto('/private')}>
-          <SettingsSVG />
-          <span class="dock-label">Settings</span>
-        </button>
-      {/if}
+      {/each}
     </div>
   </div>
   <div class="drawer-side">
     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 text-base-content min-h-90/100 w-42 p-8">
+    <ul class="menu bg-base-200 text-base-content min-h-92/100 w-42 p-8">
       <!-- Sidebar content here -->
       {#each navItems as navItem}
         <!-- {#if user?.email || navItem.public} -->
-          <li><a href={navItem.route}><navItem.svg />{navItem.title}</a></li>
+        <li><a href={navItem.route}><navItem.svg />{navItem.title}</a></li>
         <!-- {/if} -->
       {/each}
     </ul>
     <!-- #TODO: Fix the footer position -->
-    <footer class="footer bg-base-200"><p>a <a href="https://datalus.xyz"><em>datalus</em></a> endeavor.</p></footer>
+    <footer class="footer bg-base-200">
+      <p>a <a href="https://datalus.xyz"><em>datalus</em></a> endeavor.</p>
+    </footer>
   </div>
 </div>
 
@@ -211,9 +166,8 @@
   .create {
     position: -webkit-sticky;
     position: sticky;
-    top: 87dvh;
+    top: 86dvh;
     left: 90dvw;
     z-index: 9999;
   }
-
 </style>
