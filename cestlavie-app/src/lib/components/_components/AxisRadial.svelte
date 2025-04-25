@@ -19,7 +19,6 @@
 
   function click(evt) {
     filter = evt.target.firstChild.data;
-    console.log(filter);
   }
 
   /** @param {Number} total

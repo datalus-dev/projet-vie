@@ -35,6 +35,6 @@
   .chart-container {
     width: 30rem;
     height: 20rem;
-    padding: 3rem;
+    padding: 3.5rem;
   }
 </style>

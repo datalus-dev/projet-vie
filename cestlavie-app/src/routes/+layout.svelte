@@ -170,4 +170,10 @@
     left: 90dvw;
     z-index: 9999;
   }
+
+  :global {
+    button {
+      cursor: pointer;
+    }
+  }
 </style>

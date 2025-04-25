@@ -12,7 +12,7 @@ export const load = async ({ url, fetch, params, locals: { supabase, user } }) =
 
   const { data: travel } = await supabase
     .from('travel')
-    .select('content, contentType, tripId, stayId')
+    .select('content, contentType, tripId, stayId, content-> startDate')
     .eq('user_id', usernames[0].user_id);
   // loads recommendations. needs to check if auth user is in user's circle
 
@@ -44,5 +44,5 @@ export const load = async ({ url, fetch, params, locals: { supabase, user } }) =
     });
   });
 
-  return { recs, travelGroupBy };
+  return { recs, travelGroupBy, travel };
 };
